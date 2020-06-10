@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
+<script src="~/Content/hoa.js"></script>
+
+@Html.Action("SliderPartial", "Slider")
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="title-home">
+                <div class="columns-title">
+                    <img src="~/Image/loa1.png" />
+                </div>
+                <div class="columns-title">
+                    <p class="title-p">Sản phẩm</p>
+                </div>
+            </div>
+
+            @Html.Action("DanhMucPartial", "Home")
+        </div>
+    </div>
+</div>
+<div id="ContentPartial">
+    @Html.Action("ContentPartial", "Home")
+</div>
+
+<div class="container  text-center p-3">
+
+    <div class="row p-3 ">
+
+        @using (Html.BeginForm("TrangChu", "Home", FormMethod.Post))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <form class="form-inline  text-center d-print-inline-block " style="padding:50px;">
+                <h2>Chưa biết lựa chọn mẫu hoa phù hợp ?</h2>
+                <p>Để lại thông tin của quý khách tại đây, nhân viên chúng tôi sẽ chủ động liên hệ quý khách để tư vấn</p>
+                <div class="form-group has-success has-feedback d-print-flex">
+                    @Html.TextBox("ten", null, new { @class = "form-control", @placeholder = "Tên" })
+                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                </div>
+                <div class="form-group has-success has-feedback  d-print-flex">
+                    @Html.TextBox("email", null, new { @class = "form-control", @placeholder = "Email(*)" })
+                    <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                </div>
+                <div class="form-group has-error has-feedback d-print-flex">
+                    <button type="submit" class="btn btn-default ">Gửi đi</button>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".category-item").click(function () {
+            var MADM = $(this).attr('href').split('=')[1];
+            $("#ContentPartial").load("/Home/ContentPartial", { MADM: MADM })
+            return false;
+        });
+    });
+</script>
+
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            xfbml: true,
+            version: 'v7.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="1643402652458929">
+</div>

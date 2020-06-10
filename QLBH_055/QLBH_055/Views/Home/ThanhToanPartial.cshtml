@@ -1,0 +1,132 @@
+﻿
+
+@using QLBH_055.Models;
+@model KHACHHANG
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            @using (Html.BeginForm("ThanhToan", "Home", FormMethod.Post))
+            {
+                <div class="title-chung">Thông tin mua hàng</div>
+                <div class="congcu">
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.HOTEN, new { @class = "textboxchung", @placeholder = "Họ và tên" })
+                    </div>
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.DIENTHOAI, new { @class = "textboxchung", @placeholder = "Số điện thoại" })
+                    </div>
+                    <div class="chung-thanhtoan">
+                        @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
+                    </div>
+                    <div class="chung-thanhtoan height">
+                        <span class="khoangcach">Hình thức thanh toán:</span>
+                        @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding", @id = "ddlFruits", @onchange = "GetSelectedTextValue(this)" })
+
+                    </div>
+                   
+                    <div id="paybal">
+                        <div id="paypal-button-container"></div>
+
+                        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                    </div>
+                    <div class="chung-thanhtoan height">
+                        <span class="khoangcach">Hình thức giao hàng:</span>
+                        @Html.DropDownList("MaGH", (IEnumerable<SelectListItem>)ViewBag.HTGH, new { @id = "myid", @class = "danhmuc-padding" })
+
+
+                    </div>
+
+                    <div class="chung-thanhtoan">
+                        
+                        <input id="btnthanhtoan" type="submit" class="btn btn-success" value="Thanh toán" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("paybal").style.display = 'none';
+
+    $(function () {
+        $("#ddlFruits").change(function () {
+            var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+           
+            if (selectedText == "Thanh toán Paypal") {
+
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+                document.getElementById("paybal").style.display = 'block';
+            }
+            else {
+                document.getElementById("paybal").style.display = 'none';
+            }
+          
+        });
+    });
+  
+</script>
+<script type="text/javascript">
+
+    // Render the PayPal button
+    paypal.Button.render({
+        // Set your environment
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+        style: {
+            layout: 'vertical',  // horizontal | vertical
+            size: 'medium',    // medium | large | responsive
+            shape: 'rect',      // pill | rect
+            color: 'gold'       // gold | blue | silver | white | black
+        },
+
+        // Specify allowed and disallowed funding sources
+        //
+        // Options:
+        // - paypal.FUNDING.CARD
+        // - paypal.FUNDING.CREDIT
+        // - paypal.FUNDING.ELV
+        funding: {
+            allowed: [
+                paypal.FUNDING.CARD,
+                paypal.FUNDING.CREDIT
+            ],
+            disallowed: []
+        },
+
+        // Enable Pay Now checkout flow (optional)
+        commit: true,
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+        client: {
+            sandbox: 'AbvVSHgQfzkbEoU68zwUEMgtI8jc-6gmykzjOFn1cjxQYylFs7VX-A25dNuTSum24y0nJHN9_9KkU4sf',
+            production: '<insert production client id>'
+        },
+
+        payment: function (data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: {
+                                total: 1000000,
+                                currency: 'USD'
+                            }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute()
+                .then(function () {
+                    window.alert('Thanh toán thành công!!!');
+                });
+        }
+    }, '#paypal-button-container');
+</script>

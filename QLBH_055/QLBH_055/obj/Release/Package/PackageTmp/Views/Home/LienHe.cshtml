@@ -1,0 +1,84 @@
+﻿@model QLBH_055.Models.KHACHHANG
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
+}
+
+@*<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+<!------ Include the above in your HEAD tag ---------->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div id="login-overlay" class="modal-dialog" style="width:1000px;">
+    <div class="">
+        <div class="modal-header">
+
+            <div class="row">
+                <div class="col-lg-12 title ">
+                    <p class="title-wrap"><a href="~/Trang-Chu"><i class="fa fa-home"></i>Trang chủ</a> > <span>@ViewBag.Title</span></p>
+                    <hr />
+                </div><hr />
+                <div class="col-xs-6 text-center">
+                    <h4 class="modal-title" id="myModalLabel">Các hình thức liên lạc khác</h4>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <h4 class="modal-title" id="myModalLabel">Gửi tin nhắn cho chúng tôi</h4>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-body ">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="~/Trang-Chu" class="logo-top">
+                        <img src="@Url.Content(Logo)" alt="logo">
+                    </a>
+                    <ul class="list-unstyled" style="line-height: 2">
+                        <li><span class="fa fa-check text-success"></span> SDT:0372325249</li>
+                        <li><span class="fa fa-check text-success"></span> Địa chỉ:324-46, phú hòa, TP.Thủ Dầu Một</li>
+                        <li><span class="fa fa-check text-success"></span>Thời gian làm việc: từ 7h đến 22h </li>
+                        <li><span class="fa fa-check text-success"></span> Link:https://www.facebook.com/QuangLinh1998125</li>
+
+                    </ul>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="well">
+                        @using (Html.BeginForm("LienHe", "Home", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <form action="/action_page.php">
+                                <div class="form-group">
+                                    <label for="" class="control-label">Tên</label>
+                                    @Html.TextBox("ten", null, new { @class = "form-control", @placeholder = "Tên" })
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="control-label">Email(*)</label>
+                                    @Html.TextBox("email", null, new { @class = "form-control", @type = "email", @placeholder = "example@gmail.com" })
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Nội dung</label>
+                                    @Html.TextBox("noidung", null, new { @id = "editor", @class = "form-control", @placeholder = "Nội dung" })
+
+                                    <span class="help-block"></span>
+                                </div>
+
+
+                                <div class="text-center ">
+                                    <button type="submit" class="btn btn-success">Send</button>
+                                </div>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

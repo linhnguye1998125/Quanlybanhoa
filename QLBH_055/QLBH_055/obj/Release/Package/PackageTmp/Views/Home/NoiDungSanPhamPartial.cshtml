@@ -1,0 +1,72 @@
+﻿@using QLBH_055.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+
+@*<link href="~/Content/CssClient/CssDungChung.css" rel="stylesheet" />*@
+@*<div class="title-right">@ViewBag.TENDM</div>*@
+@if (Model.Count() > 0)
+{
+    <div class="table-content">
+
+        @foreach (var item in Model)
+        {
+            if (item.GIASP != null && item.GIAMGIA == 0)
+            {
+                <div class="frame">
+                    <div class="picture">
+                        <div class="hovereffect">
+                            @if (item.SPMOI == 1)
+                            {
+                                <span class="new">Mới</span>
+                            }
+                            <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                            <div class="overlay">
+
+                                <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
+
+                            </div>
+                            @*<div class="xem"></div>*@
+                        </div>
+                        <div class="content-row">
+                            <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong></p>
+                            <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="frame">
+                    <div class="picture">
+                        <div class="hovereffect">
+                            <span class=" sale">Giảm giá</span>
+                            <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a> <div class="overlay">
+                                <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
+
+                            </div>
+                        </div>
+
+                        <div class="content-row">
+
+                            <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP - item.GIAMGIA }) đ/KG</strong> &nbsp &nbsp<del>@Html.Action("FormatPrice", "Home", new { _strInput = item.GIAMGIA }) đ/KG</del></p>
+                            <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+else
+{
+    <div class="flex-justify-content mt-30 w-100" style="height:800px;">
+        <h1>Không có có sản phẩm nào</h1>
+    </div>
+}
+@*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+
+
+<div id="pagingControl" class="flex-end">
+    @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page, MADM = ViewContext.ViewBag.MADM, LocGia = ViewContext.ViewBag.MAGIA }))
+</div>

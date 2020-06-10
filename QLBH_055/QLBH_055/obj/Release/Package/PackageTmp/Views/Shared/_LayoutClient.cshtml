@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link rel="shortcut icon" sizes="30x30" href="~/Image/rose.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+
+</head>
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div id="HeaderPartial">
+        @Html.Action("HeaderPartial", "Header")
+
+    </div>
+    @Html.Action("NavbarPartial", "Navbar")
+    <div style="min-height:600px" id="render-body" class="body-content">
+        @RenderBody()
+    </div>
+    <footer>
+        @Html.Action("FooterPartial", "Footer")
+    </footer>
+    <a href="#HeaderPartial">
+        <img src="~/Image/up-arrow.png" class="len" alt="Lên" />
+    </a>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.icon_user').click(function () {
+                $('.login').toggleClass("hienthi");
+            });
+            $('.caret').click(function () {
+                $('.information_login').toggleClass("hienthi");
+            });
+        });
+
+        $(function () {
+            $(window).scroll(function () {
+                vitrihientai = $("html,body").scrollTop()
+                {
+                    console.log(vitrihientai);
+                    if (vitrihientai > 400) {
+                        $(".len ").addClass("lentren");
+                    }
+                    else
+                        if (vitrihientai < 400) {
+                            $(" .len ").removeClass("lentren");
+                        }
+                }
+            })
+        });
+
+        $(function () {
+            $(window).scroll(function () {
+                vitrihientai = $("html,body").scrollTop()
+                {
+                    console.log(vitrihientai);
+                    if (vitrihientai > 300) {
+                        $(".menu ").addClass("menuon ");
+                    }
+                    else
+                        if (vitrihientai < 300) {
+                            $(".menu ").removeClass("menuon ");
+                        }
+                }
+            })
+        });
+
+
+        $(function () {
+            $(window).scroll(function () {
+                vitrihientai = $("html,body").scrollTop()
+                {
+                    console.log(vitrihientai);
+                    if (vitrihientai > 300) {
+                        $(".logo ").addClass("toplogo ");
+                    }
+                    else
+                        if (vitrihientai < 300) {
+                            $(" .logo ").removeClass("toplogo ");
+                        }
+                }
+            })
+        });
+
+        $(function () {
+            $(window).scroll(function () {
+                vitrihientai = $("html,body").scrollTop()
+                {
+                    console.log(vitrihientai);
+                    if (vitrihientai > 300) {
+                        $(".benphai ").addClass("k ");
+                    }
+                    else
+                        if (vitrihientai < 300) {
+                            $(" .benphai ").removeClass("k ");
+                        }
+                }
+            })
+        });
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+            
+      
+      
+                $(' .menu ').addClass('menuon1');
+                $(' .logo ').addClass('toplogo1 ');
+                //document.body.style.backgroundColor = "yellow";
+                //document.getElementsByClassName("menuon").style.position = "absolute";
+
+            } else {
+                $(".menu").removeClass("menuon1");
+                $(".logo").removeClass("toplogo1");
+                //$(' .menu ').addClass('menuon');
+                //document.getElementsByClassName("menuon").style.position = "absolute";
+          
+            }
+        }
+        var x = window.matchMedia("(max-width: 1200px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+    </script>
+</body>
+</html>

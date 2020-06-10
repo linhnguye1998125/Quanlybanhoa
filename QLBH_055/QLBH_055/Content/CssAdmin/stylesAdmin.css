@@ -1,0 +1,45 @@
+﻿.textboxchung {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    font-size: 16px;
+    color: black;
+}
+.textboxchung-custom {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 0px;
+    font-size: 16px;
+    color: black;
+}
+.content.table-responsive.table-full-width {
+    text-align: -webkit-center;
+}
+.layout {
+    width: 50%;
+}
+img.img-responsive.custom-size {
+    width: 75px;
+    /* height: 113px; */
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  
+    vertical-align: top;
+  
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.container.text-center {
+    width: fit-content;
+}

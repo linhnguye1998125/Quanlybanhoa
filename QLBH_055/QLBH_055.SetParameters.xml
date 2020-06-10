@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/QLBH_055_deploy" />
+  <setParameter name="QLBHEntities-Web.config Connection String" value="metadata=res://*/Models.QLBH.csdl|res://*/Models.QLBH.ssdl|res://*/Models.QLBH.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.\SQLEXPRESS;initial catalog=QLBH;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="DefaultConnection_ConnectionString" />
+</parameters>

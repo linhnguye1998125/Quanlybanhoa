@@ -1,0 +1,59 @@
+﻿@using QLBH_055.Models
+@model TINTUC
+
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/ckeditor")
+
+
+
+
+<div class="col-md-12 text-center">
+    <div class="card card-plain">
+        <div class="header">
+            <h2>Thêm tin tức</h2>
+
+        </div>
+        <div class="content table-responsive table-full-width">
+            @using (Html.BeginForm("ThemTinTuc", "QLTinTuc", FormMethod.Post))
+            {
+              
+                        <div class="layout">
+                            @Html.TextBoxFor(n => n.MAAD, new { @class = "textboxchung", @placeholder = "Mã Admin" })
+                        </div>
+                        <div class="layout">
+                            @Html.TextAreaFor(n => n.TIEUDE, new { @class = "textboxchung-custom", @placeholder = "Tiêu đề" })
+                        </div>
+                        <div class="layout">
+                            @Html.TextBoxFor(n => n.ANH, new { @class = "textboxchung", @placeholder = "Ảnh" })
+                        </div>
+                        @*<div class="layout">
+                        @Html.TextBoxFor(n => n.NGAYDANG, new { @class = "textboxchung", @placeholder = "Ngày đăng" })
+                    </div>*@
+                        <div class="layout">
+                            @Html.TextAreaFor(n => n.MOTA, new { @class = "textboxchung-custom", @placeholder = "Mô tả" })
+                        </div>
+
+                        <div class="row">
+                            <div class="container text-center">
+                                @*@Html.TextAreaFor(n => n.NOIDUNG, new { @class = "ckeditor textboxchung-custom", @placeholder = "Nội dung" })*@
+                                @Html.TextAreaFor(n => n.NOIDUNG, new { @id = "editor1", @placeholder = "Nội dung" })
+
+                                <script>
+                                    CKEDITOR.replace('editor1');
+                                </script>
+                            </div>
+                        </div>
+                        <div class="layout">
+                            @Html.TextBoxFor(n => n.NOIBAT, new { @class = "textboxchung", @placeholder = "Nổi bật" })
+                        </div>
+                        <div class="layout">
+                            @Html.TextBoxFor(n => n.LUOTXEM, new { @class = "textboxchung", @placeholder = "Lượt xem" })
+                        </div>
+                        <div class="layout">
+                            <input style="font-size:18px;" id="btnthem" type="submit" class="btn btn-info" value="Thêm" />
+                        </div>
+                   
+            }
+        </div>
+    </div>
+</div>

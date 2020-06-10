@@ -1,0 +1,81 @@
+﻿
+
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/Content/CssClient/CssFooter.css" rel="stylesheet" />
+@{
+    /**/
+    string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
+}
+
+
+<footer class="footer-section set-bg">
+    <div class="container">
+        <div class="footer-text">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-logo text-center">
+                        <div class="logofoot ">
+                            <a href="#"><img src="~/Image/logo.png" alt="logo"></a>
+                        </div>
+                        <div class="text-center">
+                            @using (Html.BeginForm("kkk", "Footer", FormMethod.Post, new { @class = "newslatter-form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <form>
+
+                                    @Html.TextBox("email", null, new { @class = "form-control", @placeholder = "Enter your email..." })
+                                    <button type="submit"><i class="fa fa-location-arrow"></i></button>
+
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="footer-widget">
+                        <h4>Chi nhánh</h4>
+                        <ul>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Hà Nội</a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">TP HCM</a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Bình Định</a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Bình Dương</a></li>
+                        </ul>
+                        <ul>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Đà Nẵng </a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Đà Lạt</a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Vũng Tàu</a></li>
+                            <li><i class="fa fa-caret-right"></i> <a href="#">Bắc Ninh</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-widget">
+                        <h4>Mạng xã hội</h4>
+                        <ul class="social">
+                            <li><i class="fab fa-facebook-f"></i> <a href="#">Facebook</a></li>
+                            <li><i class="fab fa-instagram"></i> <a href="#">Instagram</a></li>
+                            <li><i class="fab fa-twitter"></i> <a href="#">Twitter</a></li>
+                            <li><i class="fab fa-google"></i> <a href="#">Google+</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Liên hệ với chúng tôi</h4>
+                        <ul class="contact-option">
+                            <li><i class="fa fa-map-marker"></i> Nhơn Khánh, An Nhơn, BĐ</li>
+                            <li><i class="fa fa-phone"></i> (+84)372325249</li>
+                            <li><i class="fa fa-envelope"></i> linhnguyen1998125@gmail.com</li>
+                            <li><i class="fa fa-clock-o"></i> Mon - Sat, 08 AM - 06 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

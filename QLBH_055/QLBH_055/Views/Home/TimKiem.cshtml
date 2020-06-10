@@ -1,0 +1,106 @@
+﻿@using QLBH_055.Models;
+@model List<SANPHAM>
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+@*<link href="~/Content/CssClient/CssDangNhap.css" rel="stylesheet" />*@
+<link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
+@*<link href="~/Content/CssClient/CssTimKiem.css" rel="stylesheet" />*@
+<link rel="stylesheet" href="~/Content/CssClient/CssDungChung.css" />
+
+<div class="container">
+    <div class="container">
+        <div class="col-lg-12 title">
+            <p class="title-wrap"><a href="~/Trang-Chu"><i class="fa fa-home"></i>Trang chủ</a> > <span>Kết quả tìm kiếm</span></p>
+            <hr /><h2 class="text-center">Tất cả các sản phẩm</h2>
+        </div>
+    </div>
+    @if (Model.Count() != 0)
+    {
+        <div class="container" style="margin-top:10px">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-content">
+                        @foreach (var item in Model)
+                        {
+                            if (item.GIASP != null && item.GIAMGIA == 0)
+                            {
+                                <div class="frame ">
+                                    <div class="picture">
+                                        <div class="hovereffect">
+                                            @if (item.SPMOI == 1)
+                                            {
+                                                <span class="new">Mới</span>
+                                            }
+                                            <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
+                                            <div class="overlay">
+
+                                                <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
+
+                                            </div>
+                                            @*<div class="xem"></div>*@
+                                        </div>
+                                        <div class="content-row">
+                                            <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong></p>
+                                            <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="frame">
+                                    <div class="picture">
+                                        <div class="hovereffect">
+                                            <span class=" sale">Giảm giá</span>
+                                            <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a> <div class="overlay">
+                                                <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="content-row">
+
+                                            <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP - item.GIAMGIA }) đ/KG</strong> &nbsp &nbsp<del>@Html.Action("FormatPrice", "Home", new { _strInput = item.GIAMGIA }) đ/KG</del></p>
+                                            <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="search-title text-center"><h3>Tìm kiếm không có kết quả</h3></div>
+        <div class="search-content text-center">
+            <h3>Xin lỗi, chúng tôi không thể tìm được kết quả hợp với tìm kiếm của bạn</h3>
+        </div>
+    }
+</div>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.giohang').off('click').on('click', function (e) {
+            var MASP = $(this).data('id');
+            e.preventDefault();
+            $.ajax({
+                data: { MASP: MASP },
+                url: '/Home/AddGioHang',
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        $('#HeaderPartial').load("/Header/HeaderPartial");
+                    }
+                }
+            })
+        });
+    });
+</script>
+

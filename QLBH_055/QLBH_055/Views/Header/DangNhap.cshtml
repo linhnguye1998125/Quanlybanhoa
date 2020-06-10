@@ -1,0 +1,250 @@
+﻿@using QLBH_055.Models;
+@model KHACHHANG
+
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
+    Layout = "";
+}
+<link href="~/Content/CssClient/CssDangNhap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<div class="container gird-login">
+        <div class="row">
+            @using (Html.BeginForm("DangNhap", "Header", FormMethod.Post))
+            {
+
+                <div class="container">
+                    <div class="container">
+                        <div class="col-lg-12 title">
+                            <p class="title-wrap"><a href="~/Trang-Chu">Trang chủ</a> > <span>Đăng nhập tài khoản</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 columns-login">
+                    <h2 class="title-login">Đăng nhập tài khoản</h2>
+                    <div class="input-row">
+                        @Html.TextBoxFor(n => n.EMAIL, new { @class = "input-share", @Placeholder = "Email" })
+                        @Html.ValidationMessageFor(n => n.EMAIL, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-row">
+                        @Html.PasswordFor(n => n.MATKHAU, new { @class = "input-share", @Placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(n => n.MATKHAU, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-row">
+                        <a href="#" class="forget-passwork">Quên mật khẩu</a>
+                    </div>
+                    <div class="input-row">
+                        <input class="btn btn-block custom-login" type="submit" name="dangnhap" value="Đăng nhập">
+                    </div>
+                    <div class="input-row delete-space">
+                        <p class="custom-space">Chưa có tài khoản đăng ký <a href="~/Dang-Ky">tại đây</a></p>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-row">
+                        <p class="title-sign-in">Hoặc đăng nhập với</p>
+                        <ul class="sign-in">
+                            <li class="sign-in-item google">
+                                <a href="#"><i class="fa fa-google"></i></a>
+                            </li>
+                            <li class="sign-in-item facebook">
+                                <a href="~/Dang-Nhap-Facebook"><i class="fa fa-facebook"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    @using (Html.BeginForm("DoiMatKhau", "Header", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+    {
+        <div id="frame-popup">
+            <div class="popup">
+                <div class="close">
+                    X
+                </div>
+                <div class="content-popup">
+                    <p class="title-popup">Quên mật khẩu</p>
+                    <p class="message-popup">Vui lòng nhập Email để lấy lại mật khẩu.</p>
+                    <div class="thanhngang"></div>
+                    <div class="input-row-email">
+                        @Html.TextBoxFor(n => n.EMAIL, new { @id = "EmailPopup", @class = "input-email", @Placeholder = "Nhập Email" })
+                        @Html.ValidationMessageFor(n => n.EMAIL, "", new { @id = "EmailErorr", @class = "text-danger" })
+                    </div>
+                    <div class="input-row-email">
+                        <input id="submit" class="btn btn-block custom-login" type="submit" name="gui" value="Gửi">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.forget-passwork').click(function (e) {
+                e.preventDefault();
+                $('#frame-popup').toggleClass("show");
+                $('html').toggleClass("opentOverflower");
+            })
+            $('.close').click(function () {
+                $('#frame-popup').toggleClass("show");
+                $('html').toggleClass("opentOverflower");
+            })
+        });
+        function validateForm() {
+            var Email = document.getElementById("EmailPopup");
+            var Erorr = document.getElementById("EmailErorr");
+            if (Email.value != "") {
+                return true;
+            }
+            Erorr.innerText = "Email không được để trống";
+            return false;
+        }
+    </script>*@
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/main.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.11.0.min.js"></script>
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+<!------ Include the above in your HEAD tag ---------->
+<body class="container-fluid">
+
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <div class="row">
+        @using (Html.BeginForm("DangNhap", "Header", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-md-4 col-md-offset-4">
+                <div class="text-center">
+                    <a href="~/Trang-Chu" class="logo-top">
+                        <img src="@Url.Content(Logo)" alt="logo">
+                    </a>
+                </div>
+                <div class="box">
+                    <div class="input-group ">
+
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-facebook">
+                            <i class="fa fa-fw fa-2x fa-facebook fa-fw"></i>
+                        </span>
+                        <a class="btn btn-lg btn-block btn-facebook" href="~/Dang-Nhap-Facebook"> Register with Facebook</a>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-google">
+                            <i class="fa fa-fw fa-2x fa-google fa-fw"></i>
+                        </span>
+                        <a class="btn btn-lg btn-block btn-google" href="@Url.Action("SignIn", new { type = "Google" })"> Register with Google</a>
+                    </div>
+
+                    <div class="divider-form"></div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+
+                        @*<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">*@
+                        <div class="input-row">
+                            @Html.TextBoxFor(n => n.EMAIL, new { @class = "input-share", @Placeholder = "Email" })
+                            @Html.ValidationMessageFor(n => n.EMAIL, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <div class="divider-form"></div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">*@
+                        <div class="input-row">
+                            @Html.PasswordFor(n => n.MATKHAU, new { @class = "input-share", @Placeholder = "Mật khẩu" })
+                            @Html.ValidationMessageFor(n => n.MATKHAU, "", new { @class = "text-danger" })
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+
+                        @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">*@
+                        <div class="input-row">
+                            @Html.GoogleCaptcha()
+                            @Html.InvalidGoogleCaptchaLabel("Captcha is not valid !")
+                        </div>
+
+                    </div>
+                    <div class="divider-form"></div>
+                    <div id="divLoader" style="display:none;text-align:center;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div>
+                    <input type="submit" name="dangnhap" id="btnSubmit" class="btn-block btn btn-lg btn-primary" value="Login">
+                    <p class="text-center">Bạn đã có tài khoản? <a href="~/Dang-Ky">Đăng ký tại đây</a></p>
+                    <div class="text-center">
+                        <a href="#" class="forget-passwork">Quên mật khẩu</a>
+                    </div>
+ 
+
+                </div>
+            </div>
+        }
+    </div>
+
+    @using (Html.BeginForm("DoiMatKhau", "Header", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+    {
+        <div id="frame-popup">
+            <div class="popup">
+                <div class="close">
+                    X
+                </div>
+                <div class="content-popup">
+                    <h3><p class="title-popup">Quên mật khẩu</p></h3>
+                    <p class="message-popup">Vui lòng nhập Email để lấy lại mật khẩu.</p>
+                    <div class=""></div>
+                    <div class="input-row-email">
+                        @Html.TextBoxFor(n => n.EMAIL, new { @id = "EmailPopup", @class = "input-email", @Placeholder = "Nhập Email" })
+                        @Html.ValidationMessageFor(n => n.EMAIL, "", new { @id = "EmailErorr", @class = "text-danger" })
+                    </div>
+                    <div class="input-row-email">
+                        <input id="submit" class="btn btn-block custom-login" type="submit" name="gui" value="Gửi">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $("#btnSubmit").click(function () {
+            $("#divLoader").show();
+            $.ajax
+                ({
+                    url: '/Test/Submit',
+                    dataType: "json",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: {},
+
+                })
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.forget-passwork').click(function (e) {
+                e.preventDefault();
+                $('#frame-popup').toggleClass("show");
+                $('html').toggleClass("opentOverflower");
+            })
+            $('.close').click(function () {
+                $('#frame-popup').toggleClass("show");
+                $('html').toggleClass("opentOverflower");
+            })
+        });
+        function validateForm() {
+            var Email = document.getElementById("EmailPopup");
+            var Erorr = document.getElementById("EmailErorr");
+            if (Email.value != "") {
+                return true;
+            }
+            Erorr.innerText = "Email không được để trống";
+            return false;
+        }
+    </script>
+</body>
