@@ -270,7 +270,7 @@ namespace QLBH_055.Controllers
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = true;
-                smtp.Credentials = new System.Net.NetworkCredential(EmailAdmin, "01672325249aA");// tài khoản Gmail của bạn
+                smtp.Credentials = new System.Net.NetworkCredential(EmailAdmin, "vvvvv");// tài khoản Gmail của bạn
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
                 return RedirectToAction("DangNhap", "Header");
