@@ -18,7 +18,7 @@ namespace QLBH_055.Models
 
             var senderEmail = new MailAddress("linhnguyen1998125@gmail.com", "linh admin");/*người gửi*/
             var receiverEmail = new MailAddress(email);/*người nhận*/
-            var password = "01672325249aA";/*password của người gửi*/
+            var password = "vvvvvvvvvvvvvv";/*password của người gửi*/
             var sub = "Chào các bạn đã đến với website Bán Hoa :" + DateTime.Now;/*chủ để*/
             if(noidung != ""){
                 string FilePath = HostingEnvironment.MapPath(@"~/Template/Create.html");
