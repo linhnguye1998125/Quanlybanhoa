@@ -1,4 +1,8 @@
-﻿.table-content {
+﻿body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+.table-content {
     display: grid;
     grid-gap: 5px;
     grid-template-columns: repeat(auto-fit, 270px);

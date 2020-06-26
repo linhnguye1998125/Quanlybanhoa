@@ -42,6 +42,10 @@
     padding: 10px;
 }
 /* Guid And Policy */
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
 .guid-policy-footer {
     display: flex;
     flex-direction: row;

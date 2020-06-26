@@ -1,5 +1,8 @@
 ﻿@import "CssDungChung.css";
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
 .table-responsive {
     margin-top: 18px;
     border: 1px solid #ddd;

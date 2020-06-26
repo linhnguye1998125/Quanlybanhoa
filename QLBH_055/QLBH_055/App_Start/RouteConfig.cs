@@ -62,8 +62,13 @@ namespace QLBH_055
                 defaults: new { controller = "Home", action = "DiaChi", id = UrlParameter.Optional },
                 namespaces: new string[] { "QLBH_055.Controllers" }
             );
-           
-
+            //Ý nghãi hoa
+            routes.MapRoute(
+             name: "y-nghia",
+             url: "y-nghia",
+             defaults: new { controller = "Home", action = "Ynghahoa", id = UrlParameter.Optional },
+             namespaces: new string[] { "QLBH_055.Controllers" }
+         );
 
             //Chi tiết tin tức
             routes.MapRoute(

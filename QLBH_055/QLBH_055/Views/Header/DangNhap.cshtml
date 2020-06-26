@@ -1,7 +1,6 @@
 ﻿@using QLBH_055.Models;
 @model KHACHHANG
 
-
 @{
     ViewBag.Title = "Đăng nhập";
     string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
@@ -112,11 +111,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
 <!------ Include the above in your HEAD tag ---------->
 <body class="container-fluid">
-
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
     <div class="row">
         @using (Html.BeginForm("DangNhap", "Header", FormMethod.Post))
         {
@@ -129,7 +126,6 @@
                 </div>
                 <div class="box">
                     <div class="input-group ">
-
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon addon-facebook">
@@ -143,16 +139,13 @@
                         </span>
                         <a class="btn btn-lg btn-block btn-google" href="@Url.Action("SignIn", new { type = "Google" })"> Register with Google</a>
                     </div>
-
                     <div class="divider-form"></div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-
                         @*<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">*@
                         <div class="input-row">
                             @Html.TextBoxFor(n => n.EMAIL, new { @class = "input-share", @Placeholder = "Email" })
                             @Html.ValidationMessageFor(n => n.EMAIL, "", new { @class = "text-danger" })
-
                         </div>
                     </div>
                     <div class="divider-form"></div>
@@ -162,18 +155,14 @@
                         <div class="input-row">
                             @Html.PasswordFor(n => n.MATKHAU, new { @class = "input-share", @Placeholder = "Mật khẩu" })
                             @Html.ValidationMessageFor(n => n.MATKHAU, "", new { @class = "text-danger" })
-
                         </div>
-
                     </div>
                     <div class="form-group">
-
                         @*<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">*@
                         <div class="input-row">
                             @Html.GoogleCaptcha()
                             @Html.InvalidGoogleCaptchaLabel("Captcha is not valid !")
                         </div>
-
                     </div>
                     <div class="divider-form"></div>
                     <div id="divLoader" style="display:none;text-align:center;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div>
@@ -182,13 +171,11 @@
                     <div class="text-center">
                         <a href="#" class="forget-passwork">Quên mật khẩu</a>
                     </div>
- 
 
                 </div>
             </div>
         }
     </div>
-
     @using (Html.BeginForm("DoiMatKhau", "Header", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
     {
         <div id="frame-popup">

@@ -52,7 +52,6 @@
                                                             <input class="txtsoluong dodai" type="text" data-id="@cart.MASP" value="@cart.SoLuong" autocomplete="off" size="2">
                                                         </div>
                                                     </td>
-
                                                     <td class="cart_total">
                                                         <p class="cart_total_price">@Html.Action("FormatPrice", "Home", new { _strInput = cart.ThanhTien })</p>
                                                     </td>
@@ -62,9 +61,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-
                                 <div class="col-lg-9">
-
                                 </div>
                                 <div class="col-lg-3 col-xs-12 move">
                                     <p style="font-weight:bold;font-size:15px;">Tổng tiền: @Html.Action("FormatPrice", "Home", new { _strInput = tong }) VNĐ</p>
@@ -77,7 +74,6 @@
                     {
                         Response.Redirect("~/Header/DangNhap");
                     }
-
                 </div>
             </div>
         </div>

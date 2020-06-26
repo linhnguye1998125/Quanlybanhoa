@@ -53,20 +53,21 @@ namespace QLBH_055.Controllers
             return encryptdata.ToString();
         }
 
-  
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateGoogleCaptcha]
         public ActionResult DangNhap(FormCollection f)
         {
+
             string Email = f["EMAIL"];
             string Passwork = f["MATKHAU"];
             string hash;
             using (MD5 md5Hash = MD5.Create())
             {
-                 hash = GetMd5Hash(md5Hash, Passwork);
+                hash = GetMd5Hash(md5Hash, Passwork);
             }
-           
+
             string Pass = encryption(Passwork);
             KHACHHANG kh = db.KHACHHANGs.FirstOrDefault(n => n.EMAIL == Email && n.MATKHAU == hash && n.TRANGTHAI == true);
             try
@@ -129,7 +130,7 @@ namespace QLBH_055.Controllers
             // and format each one as a hexadecimal string.
             for (int i = 0; i < data.Length; i++)
             {
-                   sBuilder.Append(data[i].ToString("x1"));
+                sBuilder.Append(data[i].ToString("x1"));
             }
 
             // Return the hexadecimal string.
@@ -198,39 +199,34 @@ namespace QLBH_055.Controllers
         [HttpPost]
         public ActionResult ThongTinCaNhan(FormCollection fc)
         {
-            try
-            {
-                string hash;
-                int MAKH = int.Parse(Session["MAKH"].ToString());
-                var UpdateKH = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MAKH);
-                UpdateKH.MAKH = MAKH;
-                UpdateKH.HOTEN = fc["HOTEN"].ToString();
-                string GioiTinh = fc["GIOITINH"].ToString();
-                if (GioiTinh == "1")
-                {
-                    UpdateKH.GIOITINH = "Nam";
-                }
-                else
-                {
-                    UpdateKH.GIOITINH = "Nữ";
-                }
-                UpdateKH.DIENTHOAI = fc["DIENTHOAI"].ToString();
-                UpdateKH.DIACHI = fc["DIACHI"].ToString();
- 
-                using (MD5 md5Hash = MD5.Create())
-                {
-                    hash = GetMd5Hash(md5Hash, UpdateKH.MATKHAU);
-                }
-                UpdateKH.MATKHAU = hash.ToString();
-                UpdateKH.NGAYSINH = DateTime.Parse(fc["NGAYSINH"].ToString());
-               
-                UpdateModel(UpdateKH);
-                db.SaveChanges();
-            }
-            catch (Exception e)
-            {
 
+            string hash;
+            int MAKH = int.Parse(Session["MAKH"].ToString());
+            var UpdateKH = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MAKH);
+            UpdateKH.MAKH = MAKH;
+            UpdateKH.HOTEN = fc["HOTEN"].ToString();
+            string GioiTinh = fc["GIOITINH"].ToString();
+            if (GioiTinh == "1")
+            {
+                UpdateKH.GIOITINH = "Nam";
             }
+            else
+            {
+                UpdateKH.GIOITINH = "Nữ";
+            }
+            UpdateKH.DIENTHOAI = fc["DIENTHOAI"].ToString();
+            using (MD5 md5Hash = MD5.Create())
+            {
+                hash = GetMd5Hash(md5Hash, fc["MATKHAU"].ToString());
+            }
+            UpdateKH.MATKHAU = hash;
+            UpdateKH.DIACHI = fc["DIACHI"].ToString();
+
+            UpdateKH.NGAYSINH = DateTime.Parse(fc["NGAYSINH"].ToString());
+
+            UpdateModel(UpdateKH);
+            db.SaveChanges();
+
             //catch (DbEntityValidationException dbEx)
             //{
             //    ErorrException(dbEx);
@@ -244,21 +240,23 @@ namespace QLBH_055.Controllers
         [HttpPost]
         public ActionResult DoiMatKhau(FormCollection f)
         {
-            string hash;
-            string matkhau = "123";
-            const string EmailAdmin = "linhnguyen1998125@gmail.com";
+            // string hash;
+            string matkhau = "202cb962ac5975b964b7152d234b70";
+            string EmailAdmin = "linhnguyen1998125@gmail.com";
             string EmailClient = f["EMAIL"].ToString();
-            var SetMauKhat = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == EmailClient);
-            if (SetMauKhat != null)
+
+            var SetMauKhau = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == EmailClient);
+            if (SetMauKhau != null)
             {
-               
-                using (MD5 md5Hash = MD5.Create())
-                {
-                    hash = GetMd5Hash(md5Hash, matkhau);
-                }
-                SetMauKhat.MATKHAU = hash;
-              
-                UpdateModel(SetMauKhat);
+
+                //using (MD5 md5Hash = MD5.Create())
+                //{
+                //    hash = GetMd5Hash(md5Hash, matkhau);
+                //}
+                //string k = hash;
+                SetMauKhau.MATKHAU = matkhau.ToString();
+                UpdateModel(SetMauKhau);
+
                 db.SaveChanges();
                 MailMessage mail = new MailMessage();
                 mail.To.Add(EmailClient);
@@ -270,11 +268,13 @@ namespace QLBH_055.Controllers
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = true;
-                smtp.Credentials = new System.Net.NetworkCredential(EmailAdmin, "vvvvv");// tài khoản Gmail của bạn
+                smtp.Credentials = new System.Net.NetworkCredential(EmailAdmin, "01672325249aA");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
-                return RedirectToAction("DangNhap", "Header");
+                //return RedirectToAction("DangNhap", "Header");
             }
+
+
             return RedirectToAction("DangNhap", "Header");
         }
         private Uri RedirectUri
@@ -389,7 +389,7 @@ namespace QLBH_055.Controllers
             }
 
 
- 
+
             var user = db.KHACHHANGs.FirstOrDefault(x => x.EMAIL == loginInfo.emailaddress);
             Session["MAKH"] = user.MAKH.ToString();
             Session["HoTen"] = user.HOTEN.ToString();
@@ -409,23 +409,23 @@ namespace QLBH_055.Controllers
                         NGAYSINH = null,
                         TRANGTHAI = true,
                         EMAIL = loginInfo.emailaddress,
-                        HOTEN = loginInfo.surname+ loginInfo.givenname,
+                        HOTEN = loginInfo.surname + loginInfo.givenname,
                         DIENTHOAI = null,
                         MATKHAU = null,
                         DIACHI = null,
 
-                       
-                };
+
+                    };
                     db.KHACHHANGs.Add(user);
-                
+
                     db.SaveChanges();
-              
+
                 }
-                
+
             }
             catch (DbEntityValidationException e)
             { }
-                
+
 
             var ident = new ClaimsIdentity(
                     new[] { 
@@ -449,6 +449,6 @@ namespace QLBH_055.Controllers
             return Redirect("~/");
 
         }
-     
+
     }
 }

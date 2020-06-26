@@ -6,7 +6,10 @@
     position: relative;
     width: max-content;
 }
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
 .name {
     color: black
 }

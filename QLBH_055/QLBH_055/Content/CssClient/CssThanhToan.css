@@ -9,7 +9,10 @@
         text-decoration: none;
         color: black;
     }
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
         .title-wrap a:hover {
             text-decoration: none;
             color: #9bd031;

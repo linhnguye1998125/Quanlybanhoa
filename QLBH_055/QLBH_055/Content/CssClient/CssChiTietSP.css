@@ -1,156 +1,11 @@
-﻿/*.picture1 {
-    width: 400px;
-    height: 400px;
-}
-
-.dungchung {
-    margin-bottom: 10px;
-    font-size: 25px;
-}
-
-.ten {
-    margin-top: 40px;
-}
-
-.chitietsanpham {
-    padding-top: 40px;
-    align-items:center;
-    display:flex;
-    justify-content:center;
-}
-
-.trangthai {
-    font-size: 20px;
-}
-
-.conhang {
-    margin-left: 10px;
-    padding: 6px;
-    background-color: #4dec50;
-    color: white;
-    border-radius: 13px;
-}
-
-.soluong {
-    font-size: 20px;
-}
-
-.tien {
-    font-size: 25px;
-    color: red;
-}
-
-.ngang {
-    border-bottom: 2px solid black;
-}
-
-.mota {
-    height: 230px;
-    font-size: 18px;
-    font-style: oblique;
-    text-align: justify;
-}
-
-.nhapsoluong {
-    padding-left: 9px;
-    overflow: visible;
-    width: 60px;
-    height:37px;
-}
-
-.themvaogiohang {
-    text-decoration: none;
-    color: white;
-    height: 37px;
-}
-
-
-.cot {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.hinh-ten {
-    width: 60px;
-    height: 100px;
-    border-radius: 17px;
-    float: left;
-}
-
-.hinh {
-    width: 60px;
-    height: 100px;
-}
-
-.noidungbl {
-    width: 88%;
-    height: 100px;
-    padding: 5px;
-    display: inline-block;
-}
-
-.nhanxet-huy {
-    width: 97%;
-    text-align: right;
-}
-
-.nhanxet {
-    font-weight: bold;
-    font-size: 17px;
-    text-align: center;
-    margin: 20px 0px;
-}
-
-.customp.ten {
-    margin: 0px 3px 3px 3px;
-    color: #128ee9;
-    font-weight: bold;
-}
-
-.ngaygio {
-    color: black;
-    margin-left: 10px;
-}
-
-.nhapnd {
-    width: 99%;
-    height: 71px;
-    padding: 5px;
-}
-
-.soluotxem {
-    font-size: 14px;
-}
-
-
-.tongsl {
-    padding: 5px;
-    line-height: 28px;
-    margin-left: 6px;
-    font-size: 15px;
-}
-.title-wrap {
-    font-size: 15px !important;
-    padding: 0px 0px 0px 6px !important;
-    font-family: "Gotham",sans-serif;
-    margin: 0px !important;
-}
-
-    .title-wrap a {
-        text-decoration: none;
-        color: black;
-    }*/
-
-
-
-
+﻿
 /*****************globals*************/
-body {
-    font-family: 'open sans';
-    overflow-x: hidden;
-}
 
+body {
+    font-family: "Times New Roman", Times, serif;
+    overflow-x: hidden;
+    font-size: 18px;
+}
 img {
     max-width: 100%;
 }
@@ -217,9 +72,10 @@ img {
     }
 
 .card {
-    margin-top: 50px;
-    background: #eee;
+    margin-top: 20px;
+    background: #fff6f6;
     padding: 3em;
+    font-size: x-large;
     margin-bottom: 50px;
     line-height: 1.5em;
 }
@@ -367,4 +223,14 @@ img {
 /*# sourceMappingURL=style.css.map */
 
 
+.flex-container {
+    display: block;
+    background-color: #a112bb;
+}
 
+    .flex-container > div {
+        background-color: #eeccf3;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+    }

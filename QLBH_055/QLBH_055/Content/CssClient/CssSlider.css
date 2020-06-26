@@ -1,4 +1,6 @@
-﻿
+﻿body {
+    font-family: "Times New Roman", Times, serif;
+}
 .background-slider {
     /*background-image: url('../../Image/background_slider.png');
     background-position: top left;

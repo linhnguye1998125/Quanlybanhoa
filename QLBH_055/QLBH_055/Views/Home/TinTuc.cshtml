@@ -7,17 +7,14 @@
 }
 @Styles.Render("~/TinTuc/css")
 <link href="~/Content/CssClient/CssTinTuc.css" rel="stylesheet" />
-
 <div class="container">
     <div class="container">
         <div class="col-lg-12 title">
             <p class="title-wrap"><a href="~/Trang-Chu"><i class="fa fa-home"></i>Trang chủ</a> > <span>@ViewBag.Title</span></p>
         </div>
-
     </div>
     <hr />
     <div class="col-lg-12 text-center">
-
 
         @*<div class="title-left">Danh mục</div>
             <div class="left">
@@ -39,14 +36,11 @@
                 <div class="news-frame">
                     <div class="single-blog-item">
                         <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT">
-
                             <img class="img-responsive img-thumbnail custom-img-news" style="height:300px;width:400px" src="@Url.Content("~/Image/" + item.ANH + " ")" alt="ảnh tin tức" />
                         </a>
                         <div class="sb-text">
                             <div class="content-news">
-
                                 <h4> <a href="~/Chi-Tiet-Tin-Tuc?MATT=@item.MATT" class="title-news">@item.TIEUDE</a></h4>
-
                                 <p class="datetime-news"><i class="fa fa-clock-o"></i> @item.NGAYDANG.Value.ToString("dd/MM/yyyy")</p>
                                 <p class="content-describe">@item.MOTA</p>
                             </div>
@@ -59,4 +53,3 @@
         <div class="col-lg-2"></div>
     </div>
 </div>
-

@@ -9,7 +9,10 @@
 html {
     overflow-x: hidden !important;
 }
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
 .title {
     font-family: "Gotham",sans-serif;
     margin: 0;

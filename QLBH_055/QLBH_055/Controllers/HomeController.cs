@@ -32,7 +32,7 @@ namespace QLBH_055.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TrangChu(string ten, string email)
         {
-            s.sendEmail(ten, email,"");
+            s.sendEmail(ten, email, "");
             return View();
         }
         //Trang giới thiệu
@@ -44,7 +44,12 @@ namespace QLBH_055.Controllers
         // Trang Liên Hệ
         public ActionResult LienHe()
         {
-         
+
+            return View();
+        }
+        public ActionResult Ynghahoa()
+        {
+
             return View();
         }
         [HttpPost]
@@ -54,8 +59,8 @@ namespace QLBH_055.Controllers
             s.sendEmail(ten, email, noidung);
             return View();
         }
-     
-      
+
+
         public ActionResult DiaChi()
         {
             return View();
@@ -133,6 +138,10 @@ namespace QLBH_055.Controllers
         //    ViewBag.DanhMuc = DanhMuc;
         //    return View(SanPham);
         //}
+        public ActionResult kkk()
+        {
+            return View();
+        }
 
         public ActionResult TimKiem(string txttimkiem)
         {
@@ -462,6 +471,6 @@ namespace QLBH_055.Controllers
             db.SaveChanges();
             return int.Parse(hoadon.MAKH.ToString());
         }
-     
+
     }
 }

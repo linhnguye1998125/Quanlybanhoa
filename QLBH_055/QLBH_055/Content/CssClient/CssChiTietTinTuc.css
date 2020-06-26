@@ -2,15 +2,18 @@
     margin: 0px;
     padding: 0px;
 }
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
 html {
     overflow-x: hidden !important;
 }
 
 .title {
-    font-family: "Gotham",sans-serif;
+ 
     margin: 0;
-    font-size: 14px;
+
     padding: 10px 5px 10px;
     border-radius: 0;
     line-height: 24px;
@@ -27,18 +30,18 @@ html {
 }
 
 .title-wrap {
-    font-size: 15px !important;
+
     padding: 0px 0px 0px 6px !important;
-    font-family: "Gotham",sans-serif;
+    
     margin: 0px !important;
 }
 
     .title-wrap a {
         text-decoration: none;
-        color: black;
+    
     }
 
         .title-wrap a:hover {
             text-decoration: none;
-            color: #9bd031;
+            color: #8e34e9;
         }

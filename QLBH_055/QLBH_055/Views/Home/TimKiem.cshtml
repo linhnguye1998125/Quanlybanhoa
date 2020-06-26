@@ -8,7 +8,6 @@
 <link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
 @*<link href="~/Content/CssClient/CssTimKiem.css" rel="stylesheet" />*@
 <link rel="stylesheet" href="~/Content/CssClient/CssDungChung.css" />
-
 <div class="container">
     <div class="container">
         <div class="col-lg-12 title">
@@ -35,16 +34,13 @@
                                             }
                                             <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
                                             <div class="overlay">
-
                                                 <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
-
                                             </div>
                                             @*<div class="xem"></div>*@
                                         </div>
                                         <div class="content-row">
                                             <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP }) đ/KG</strong></p>
                                             <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
-
                                         </div>
                                     </div>
                                 </div>
@@ -57,12 +53,9 @@
                                             <span class=" sale">Giảm giá</span>
                                             <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a> <div class="overlay">
                                                 <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
-
                                             </div>
                                         </div>
-
                                         <div class="content-row">
-
                                             <p style="font-size: 15px;" class="title-content"><strong class="color-p">@Html.Action("FormatPrice", "Home", new { _strInput = item.GIASP - item.GIAMGIA }) đ/KG</strong> &nbsp &nbsp<del>@Html.Action("FormatPrice", "Home", new { _strInput = item.GIAMGIA }) đ/KG</del></p>
                                             <a href="~/Chi-Tiet?MASP=@item.MASP"><p class="title-content">@item.TENSP</p></a>
                                         </div>
@@ -84,8 +77,7 @@
     }
 </div>
 <script src="~/Scripts/jquery-3.3.1.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
+<script type="text/javascript">$(document).ready(function () {
         $('.giohang').off('click').on('click', function (e) {
             var MASP = $(this).data('id');
             e.preventDefault();
@@ -101,6 +93,4 @@
                 }
             })
         });
-    });
-</script>
-
+    });</script>

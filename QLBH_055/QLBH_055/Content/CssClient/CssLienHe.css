@@ -1,16 +1,19 @@
 ﻿.title-wrap {
-    font-family: "Gotham",sans-serif;
-    font-size: 15px !important;
+
+
     padding: 0px 0px 0px 6px !important;
     margin: 0px !important;
 }
-
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
     .title-wrap a {
         text-decoration: none;
-        color: black;
+    
     }
 
         .title-wrap a:hover {
             text-decoration: none;
-            color: #9bd031;
+            color: #af22fa;
         }

@@ -1061,6 +1061,7 @@
     <Content Include="Views\Home\LienHe.cshtml" />
     <Content Include="Views\Home\DiaChi.cshtml" />
     <Content Include="Views\Home\GioiThieu.cshtml" />
+    <Content Include="Views\Home\Ynghahoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
