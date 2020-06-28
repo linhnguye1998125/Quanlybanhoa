@@ -8,7 +8,17 @@
 }
 <link href="~/Content/CssClient/CssChiTietSP.css" rel="stylesheet" />
 
-
+<style type="text/css">
+    span.powrMark__text {
+        display: none;
+    }
+    #appView .powrMark__logo-block {
+        width: 65px;
+        display: none;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+</style>
 @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
@@ -32,7 +42,7 @@
                         <div class="tab-pane" id="pic-5"><img src="~/Image/tangme9.jpg" alt="bị lỗi" /></div>
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
-                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Url.Content("~/Image/"+Model.ANHSP)" /></a></li>
+                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Url.Content("~/Image/"+Model.ANHSP)" alt="Ảnh bị lỗi "/></a></li>
                         <li><a data-target="#pic-2" data-toggle="tab"><img src="~/Image/tangme4.jpg" alt="bị lỗi" /></a></li>
                         <li><a data-target="#pic-3" data-toggle="tab"><img src="~/Image/tangme8.jpg" alt="bị lỗi" /></a></li>
                         <li><a data-target="#pic-4" data-toggle="tab"><img src="~/Image/tangme7.jpg" alt="bị lỗi" /></a></li>
@@ -76,4 +86,6 @@
             </div>
         </div>
     </div>
+    <div class="powr-comments" id="85be120e_1593311495"></div>
+    <script src="https://www.powr.io/powr.js?platform=html"></script>
 </div>

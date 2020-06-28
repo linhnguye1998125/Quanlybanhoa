@@ -1,0 +1,9 @@
+﻿.zs-container .zs-ico .zs-ico-main {
+    display: block;
+    position: relative;
+    z-index: 3;
+    background: url(./images/stick_zalo.png) 0 0 no-repeat;
+    background-size: cover;
+    width: 68px;
+    height: 68px;
+}

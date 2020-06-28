@@ -40,6 +40,10 @@ namespace QLBH_055.Controllers
         {
             return View();
         }
+        public ActionResult Chinhsach()
+        {
+            return View();
+        }
 
         // Trang Liên Hệ
         public ActionResult LienHe()
@@ -48,6 +52,11 @@ namespace QLBH_055.Controllers
             return View();
         }
         public ActionResult Ynghahoa()
+        {
+
+            return View();
+        }
+        public ActionResult Hoatuchon()
         {
 
             return View();

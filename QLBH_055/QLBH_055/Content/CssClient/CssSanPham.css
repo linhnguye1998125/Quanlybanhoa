@@ -65,7 +65,8 @@
 .title-content {
     font-size: 16px;
     font-family: sans-serif;
-    text-align: center;
+    color: #887979cf;
+    font-weight: bold;
 }
 
 .color-p {

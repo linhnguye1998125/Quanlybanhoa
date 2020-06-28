@@ -118,15 +118,32 @@
                                 {
                                     if (Session["MAKH"] == null)
                                     {
-                                        <span class="icon_user">
-                                            <i class="fa fa-user"></i>
-                                        </span>
-                                        <ul class="login list-group">
-                                            <li class="list-group-item">
-                                                <a href="~/Dang-Nhap">Đăng nhập</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a href="~/Dang-Ky">Đăng ký</a>
+                                        @*<span class="icon_user">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <ul class="login list-group">
+                                                <li class="list-group-item">
+                                                    <a href="~/Dang-Nhap">Đăng nhập</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="~/Dang-Ky">Đăng ký</a>
+                                                </li>
+                                            </ul>*@
+                                        <ul>
+                                            <li class="dropdown icon_user">
+                                           
+                                                    <span class="" data-toggle="dropdown">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                          
+                                                    <ul class="dropdown-menu ">
+                                                        <li class="">
+                                                            <a href="~/Dang-Nhap">Đăng nhập</a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="~/Dang-Ky">Đăng ký</a>
+                                                        </li>   
+                                                    </ul>
                                             </li>
                                         </ul>
                                     }

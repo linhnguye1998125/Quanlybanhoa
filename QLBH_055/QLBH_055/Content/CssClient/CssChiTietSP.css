@@ -234,3 +234,9 @@ img {
         padding: 20px;
         font-size: 30px;
     }
+
+span.powrMark__text {
+    /* z-index: 1000; */
+    /* opacity: 12; */
+    display: none;
+}

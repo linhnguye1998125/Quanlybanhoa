@@ -62,7 +62,7 @@
                                     <th>Ảnh</th>
                                     <th>Ngày đăng</th>
                                     <th>Mô tả</th>
-                                    <th>Nội dung</th>
+                                    <th >Nội dung</th>
                                     <th>Nổi bật</th>
                                     <th>Lượt xem</th>
                                     <th>Công cụ</th>
@@ -83,11 +83,11 @@
                                     <tr>
                                         <td>@item.MATT</td>
                                         <td>@item.MAAD</td>
-                                        <td>@item.TIEUDE</td>
+                                        <td class="text">@item.TIEUDE</td>
                                         <td><img src="@Url.Content("~/Image/"+item.ANH)" class="img-responsive custom-size" alt="Lỗi" /></td>
                                         <td>@item.NGAYDANG.Value.ToString("dd/MM/yyyy")</td>
-                                        <td>@item.MOTA</td>
-                                        <td>@item.NOIDUNG</td>
+                                        <td class="text">@item.MOTA</td>
+                                        <td class="text">@item.NOIDUNG</td>
                                         <td>@item.NOIBAT</td>
                                         <td>@item.LUOTXEM</td>
                                         <td>

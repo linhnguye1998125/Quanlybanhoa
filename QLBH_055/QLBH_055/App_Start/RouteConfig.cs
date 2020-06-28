@@ -69,6 +69,26 @@ namespace QLBH_055
              defaults: new { controller = "Home", action = "Ynghahoa", id = UrlParameter.Optional },
              namespaces: new string[] { "QLBH_055.Controllers" }
          );
+            routes.MapRoute(
+              name: "Ynghahoa",
+              url: "{controller}/y-nghia",
+              defaults: new { controller = "Home", action = "Ynghahoa", id = UrlParameter.Optional },
+              namespaces: new string[] { "QLBH_055.Controllers" }
+          );
+            //hoa tu chon
+            routes.MapRoute(
+             name: "Tu-Chon",
+             url: "Tu-Chon",
+             defaults: new { controller = "Home", action = "Hoatuchon", id = UrlParameter.Optional },
+             namespaces: new string[] { "QLBH_055.Controllers" }
+
+         );
+            routes.MapRoute(
+               name: "Hoatuchon",
+               url: "{controller}/Tu-Chon",
+               defaults: new { controller = "Home", action = "Hoatuchon", id = UrlParameter.Optional },
+               namespaces: new string[] { "QLBH_055.Controllers" }
+           );
 
             //Chi tiết tin tức
             routes.MapRoute(

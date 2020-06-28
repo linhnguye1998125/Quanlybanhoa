@@ -31,9 +31,6 @@ namespace QLBH_055.Controllers
             s.sendEmail("", email, "");
             return Redirect("~/");
         }
-        public ActionResult MuaHang()
-        {
-            return View();
-        }
+     
     }
 }

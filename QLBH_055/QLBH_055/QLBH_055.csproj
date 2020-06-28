@@ -838,6 +838,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CssClient\css.css" />
     <Content Include="Content\CssClient\csscard.css" />
     <Content Include="Content\CssClient\CssChiTietSP.css" />
     <Content Include="Content\CssClient\CssChiTietTinTuc.css" />
@@ -1041,7 +1042,6 @@
     <Content Include="Views\Home\ContentPartial.cshtml" />
     <Content Include="Views\Home\TinTucPartial.cshtml" />
     <Content Include="Views\Footer\FooterPartial.cshtml" />
-    <Content Include="Views\Footer\MuaHang.cshtml" />
     <Content Include="Views\Header\HeaderPartial.cshtml" />
     <Content Include="Views\Header\DangNhap.cshtml" />
     <Content Include="Views\Header\DangKy.cshtml" />
@@ -1062,6 +1062,8 @@
     <Content Include="Views\Home\DiaChi.cshtml" />
     <Content Include="Views\Home\GioiThieu.cshtml" />
     <Content Include="Views\Home\Ynghahoa.cshtml" />
+    <Content Include="Views\Home\Hoatuchon.cshtml" />
+    <Content Include="Views\Home\Chinhsach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

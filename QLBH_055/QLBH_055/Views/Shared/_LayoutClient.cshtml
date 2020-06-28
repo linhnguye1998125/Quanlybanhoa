@@ -10,47 +10,28 @@
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/main.js"></script>
-
+    <link href="~/Content/CssClient/css.css" rel="stylesheet" />
 </head>
 <body>
-    @*<!-- Load Facebook SDK for JavaScript -->
-        <div id="fb-root"></div>
+
+    @*<!-- Subiz -->
         <script>
-            window.fbAsyncInit = function () {
-                FB.init({
-                    xfbml: true,
-                    version: 'v7.0'
-                });
-            };
+            (function (s, u, b, i, z) {
+                u[i] = u[i] || function () {
+                    u[i].t = +new Date();
+                    (u[i].q = u[i].q || []).push(arguments);
+                };
+                z = s.createElement('script');
+                var zz = s.getElementsByTagName('script')[0];
+                z.async = 1; z.src = b; z.id = 'subiz-script';
+                zz.parentNode.insertBefore(z, zz);
+            })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
+            subiz('setAccount', 'acqroyphuufzlqjzpgkk');
+        </script>
+        <!-- End Subiz -->*@
+    <div class="zalo-chat-widget" data-oaid="1949871427009195666" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
 
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-        <!-- Your Chat Plugin code -->
-        <div class="fb-customerchat"
-             attribution=setup_tool
-             page_id="1643402652458929">
-        </div>*@
-    <!-- Subiz -->
-    <script>
-        (function (s, u, b, i, z) {
-            u[i] = u[i] || function () {
-                u[i].t = +new Date();
-                (u[i].q = u[i].q || []).push(arguments);
-            };
-            z = s.createElement('script');
-            var zz = s.getElementsByTagName('script')[0];
-            z.async = 1; z.src = b; z.id = 'subiz-script';
-            zz.parentNode.insertBefore(z, zz);
-        })(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
-        subiz('setAccount', 'acqroyphuufzlqjzpgkk');
-    </script>
-    <!-- End Subiz -->
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
     <div id="preloder">
         <div class="loader"></div>
     </div>
