@@ -53,7 +53,11 @@ body {
 }
 
 .chung-thanhtoan {
+    text-align: -webkit-center;
     width: 100%;
+}
+.chung-thanhtoan {
+    text-align: -webkit-center;
 }
 
 .textboxchung {

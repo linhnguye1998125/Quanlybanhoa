@@ -4,42 +4,53 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            @using (Html.BeginForm("ThanhToan", "Home", FormMethod.Post))
-            {
-                <div class="title-chung">Thông tin mua hàng</div>
-                <div class="congcu">
-                    <div class="chung-thanhtoan">
-                        @Html.TextBoxFor(n => n.HOTEN, new { @class = "textboxchung", @placeholder = "Họ và tên" })
-                    </div>
-                    <div class="chung-thanhtoan">
-                        @Html.TextBoxFor(n => n.DIENTHOAI, new { @class = "textboxchung", @placeholder = "Số điện thoại" })
-                    </div>
-                    <div class="chung-thanhtoan">
-                        @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
-                    </div>
-                    <div class="chung-thanhtoan height">
-                        <span class="khoangcach">Hình thức thanh toán:</span>
-                        @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding", @id = "ddlFruits", @onchange = "GetSelectedTextValue(this)" })
-                    </div>
-
-                    <div id="paybal">
-                        <div id="paypal-button-container"></div>
-                        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-                    </div>
-                    <div class="chung-thanhtoan height">
-                        <span class="khoangcach">Hình thức giao hàng:</span>
-                        @Html.DropDownList("MaGH", (IEnumerable<SelectListItem>)ViewBag.HTGH, new { @id = "myid", @class = "danhmuc-padding" })
-
-                    </div>
-                    <div class="chung-thanhtoan">
-
-                        <input id="btnthanhtoan" type="submit" class="btn btn-success" value="Thanh toán" />
-                    </div>
+            @using (Html.BeginForm("ThanhToan", "Home", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+            {@Html.AntiForgeryToken()
+            <div class="title-chung">Thông tin mua hàng</div>
+            <div class="congcu">
+                <div class="chung-thanhtoan">
+                    @Html.TextBoxFor(n => n.HOTEN, new { @class = "textboxchung", @placeholder = "Họ và tên" })
                 </div>
-            }
+                <div class="chung-thanhtoan">
+                    @Html.TextBoxFor(n => n.DIENTHOAI, new { @class = "textboxchung", @placeholder = "Số điện thoại" })
+                </div>
+                <div class="chung-thanhtoan">
+                    @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
+                </div>
+                <div class="chung-thanhtoan height">
+                    <span class="khoangcach">Hình thức thanh toán:</span>
+                    @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding", @id = "ddlFruits", @onchange = "GetSelectedTextValue(this)" })
+                </div>
+
+                <div id="paybal">
+                    <div id="paypal-button-container"></div>
+
+                    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                    
+                </div>
+                <div class="chung-thanhtoan height">
+                    <span class="khoangcach">Hình thức giao hàng:</span>
+                    @Html.DropDownList("MaGH", (IEnumerable<SelectListItem>)ViewBag.HTGH, new { @id = "myid", @class = "danhmuc-padding" })
+
+                </div>
+
+                <div id="divLoader" style="display:none;text-align:center;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div>
+
+                <div class="chung-thanhtoan">
+                    <input id="btnthanhtoan" type="submit" class="btn btn-success" value="Thanh toán" />
+                </div>
+            </div>
+        }
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#btnthanhtoan').click(function () {
+            document.getElementById("ddlFruits").disabled = false;
+        });
+    });
+</script>
 <script type="text/javascript">
     document.getElementById("paybal").style.display = 'none';
 
@@ -52,14 +63,31 @@
 
                 //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
                 document.getElementById("paybal").style.display = 'block';
+                document.getElementById("btnthanhtoan").style.display = 'none';
+            
             }
             else {
                 document.getElementById("paybal").style.display = 'none';
+                document.getElementById("btnthanhtoan").style.display = 'block';
             }
 
         });
     });
 
+</script>
+<script>
+    $("#btnthanhtoan").click(function () {
+        $("#divLoader").show();
+        $.ajax
+            ({
+                url: '/Test/Submit',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: {},
+
+            })
+    });
 </script>
 <script type="text/javascript">
 
@@ -119,6 +147,8 @@
             return actions.payment.execute()
                 .then(function () {
                     window.alert('Thanh toán thành công!!!');
+                    document.getElementById("btnthanhtoan").style.display = 'block';
+                    document.getElementById("ddlFruits").disabled = true;
                 });
         }
     }, '#paypal-button-container');

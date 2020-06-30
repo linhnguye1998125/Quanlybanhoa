@@ -42,7 +42,7 @@ namespace QLBH_055.Areas.Admin.Controllers
                 TinTuc.MAAD = MAAD;
                 TinTuc.TIEUDE = TIEUDE;
                 TinTuc.ANH = ANH;
-                TinTuc.NGAYDANG = DateTime.Parse(DateTime.Now.Date.ToString("dd/MM/yyyy"));
+                TinTuc.NGAYDANG = DateTime.Parse(DateTime.Now.Date.ToString("yyyy/MM/dd"));
                 TinTuc.MOTA = MOTA;
                 TinTuc.NOIDUNG = NOIDUNG;
                 TinTuc.NOIBAT = NOIBAT;

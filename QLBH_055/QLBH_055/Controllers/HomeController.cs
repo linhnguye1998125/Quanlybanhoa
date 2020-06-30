@@ -426,7 +426,7 @@ namespace QLBH_055.Controllers
             }
             return View(list);
         }
-
+        
         [HttpPost]
         public ActionResult ThanhToan(FormCollection kh)
         {
@@ -461,7 +461,7 @@ namespace QLBH_055.Controllers
                 throw ex;
             }
             Session["GioHang"] = null;
-            return Redirect("~/Home/TrangChu");
+            return Redirect("~/Trang-Chu");
         }
 
         public decimal TongTien()

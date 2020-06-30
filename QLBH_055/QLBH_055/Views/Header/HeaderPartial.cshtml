@@ -43,14 +43,14 @@
             </span>
         </a>
 
-        <a href="~/Home/LienHe" class=" sdd">
+        <a href="~/Lien-He" class=" sdd">
             <span style=" color: white;">
                 Liên hệ
             </span>
         </a>
-        <a href="~/TroGiup" class=" sdd" id="no">
+        <a href="~/Chinhsach" class=" sdd" id="no">
             <span style=" color: white;">
-                Trợ Giúp
+                Chính sách
             </span>
         </a>
     </div>
@@ -119,42 +119,43 @@
                                     if (Session["MAKH"] == null)
                                     {
                                         @*<span class="icon_user">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                            <ul class="login list-group">
-                                                <li class="list-group-item">
-                                                    <a href="~/Dang-Nhap">Đăng nhập</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="~/Dang-Ky">Đăng ký</a>
-                                                </li>
-                                            </ul>*@
+                    <i class="fa fa-user"></i>
+                </span>
+                <ul class="login list-group">
+                    <li class="list-group-item">
+                        <a href="~/Dang-Nhap">Đăng nhập</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="~/Dang-Ky">Đăng ký</a>
+                    </li>
+                </ul>*@
                                         <ul>
                                             <li class="dropdown icon_user">
-                                           
-                                                    <span class="" data-toggle="dropdown">
-                                                        <i class="fa fa-user"></i>
-                                                    </span>
-                                          
-                                                    <ul class="dropdown-menu ">
-                                                        <li class="">
-                                                            <a href="~/Dang-Nhap">Đăng nhập</a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a href="~/Dang-Ky">Đăng ký</a>
-                                                        </li>   
-                                                    </ul>
+
+                                                <span class="" data-toggle="dropdown">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+
+                                                <ul class="dropdown-menu ">
+                                                    <li class="">
+                                                        <a href="~/Dang-Nhap">Đăng nhập</a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a href="~/Dang-Ky">Đăng ký</a>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     }
                                     else
                                     {
-                                        <p class="mid-share">
+                                        <p class="mid-share " data-toggle="dropdown">
                                             <strong>@Session["HoTen"].ToString()</strong>
                                             <span class="caret">
                                             </span>
                                         </p>
-                                        <ul class="information_login list-group">
+                                      
+                                        <ul class="information_login list-group dropdown-menu">
                                             <li><a href="~/Thong-Tin-Ca-Nhan">Thông tin cá nhân</a></li>
                                             <li><a href="~/Dang-Xuat">Đăng xuất</a></li>
                                         </ul>
