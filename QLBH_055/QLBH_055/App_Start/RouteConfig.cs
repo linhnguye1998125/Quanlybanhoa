@@ -47,6 +47,14 @@ namespace QLBH_055
                 defaults: new { controller = "Home", action = "Chinhsach", id = UrlParameter.Optional },
                 namespaces: new string[] { "QLBH_055.Controllers" }
             );
+            //Đường dẫn trang huong dan thanh toan
+            routes.MapRoute(
+                name: "Huongdanthanhtoan",
+                url: "Huongdanthanhtoan",
+                defaults: new { controller = "Home", action = "Huongdanthanhtoan", id = UrlParameter.Optional },
+                namespaces: new string[] { "QLBH_055.Controllers" }
+            );
+         
             //Đường dẫn trang giới thiệu
             routes.MapRoute(
                 name: "GioiThieu",

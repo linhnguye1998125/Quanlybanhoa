@@ -1017,6 +1017,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\paper-dashboard.js" />
+    <Content Include="Template\giohangtuchon.html" />
+    <Content Include="Template\giohang.html" />
     <Content Include="Template\Create.html" />
     <Content Include="Template\Update.html" />
     <Content Include="umbala.js" />
@@ -1064,6 +1066,8 @@
     <Content Include="Views\Home\Ynghahoa.cshtml" />
     <Content Include="Views\Home\Hoatuchon.cshtml" />
     <Content Include="Views\Home\Chinhsach.cshtml" />
+    <Content Include="Views\Home\Huongdanthanhtoan.cshtml" />
+    <Content Include="Views\Home\kkk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

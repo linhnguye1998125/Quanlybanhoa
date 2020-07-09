@@ -9,7 +9,9 @@ using System.Web.UI.WebControls;
 using PagedList;
 using PagedList.Mvc;
 using System.Data.SqlClient;
-
+using System.Globalization;
+using System.Threading.Tasks;
+using System.Data.Entity.Validation;
 
 namespace QLBH_055.Controllers
 {
@@ -51,6 +53,11 @@ namespace QLBH_055.Controllers
 
             return View();
         }
+        public ActionResult Huongdanthanhtoan()
+        {
+
+            return View();
+        }
         public ActionResult Ynghahoa()
         {
 
@@ -59,6 +66,13 @@ namespace QLBH_055.Controllers
         public ActionResult Hoatuchon()
         {
 
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Hoatuchon(string ten, string email, string noidung, string loaihoa, string sl,string hoa)
+        {
+            s.sendEmailgiohangtchon(ten,email,noidung,loaihoa,sl,hoa);
             return View();
         }
         [HttpPost]
@@ -150,6 +164,15 @@ namespace QLBH_055.Controllers
         public ActionResult kkk()
         {
             return View();
+        }
+
+        public JsonResult gettensp()
+        {
+
+            var name = db.SANPHAMs.OrderBy(p => p.TENSP).Select(p => p.TENSP).ToList();
+
+            //   var tensp = new SendEmail().getlistname();
+            return Json(new { data = name }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult TimKiem(string txttimkiem)
@@ -350,6 +373,7 @@ namespace QLBH_055.Controllers
         {
             var GioHang = new JavaScriptSerializer().Deserialize<List<GioHang>>(CartModel);
             var session = (List<GioHang>)Session["GioHang"];
+
             foreach (var item in session)
             {
                 var jsonItem = GioHang.SingleOrDefault(n => n.MASP == item.MASP);
@@ -393,18 +417,21 @@ namespace QLBH_055.Controllers
         public PartialViewResult ThanhToanPartial()
         {
             int MaKH = int.Parse(Session["MAKH"].ToString());
+            string mail = Session["EMAIL"].ToString();
             var KhachHang = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MaKH);
             List<HTThanhToanItem> listHTThanhToan = new List<HTThanhToanItem>();
             listHTThanhToan.Add(new HTThanhToanItem(1, "Thanh toán trước khi giao hàng"));
             listHTThanhToan.Add(new HTThanhToanItem(2, "Thanh toán Paypal"));
-            listHTThanhToan.Add(new HTThanhToanItem(3, "Thanh toán Bảo Kim"));
+            listHTThanhToan.Add(new HTThanhToanItem(3, "Thanh toán sau khi nhận hàng"));
             List<HThucGiaoHang> listHTGiaoHang = new List<HThucGiaoHang>();
-            listHTGiaoHang.Add(new HThucGiaoHang(1, "Giao trực tiếp"));
+            listHTGiaoHang.Add(new HThucGiaoHang(1, "Giao trực tiếp tại cửa hàng"));
             listHTGiaoHang.Add(new HThucGiaoHang(2, "Chuyển giao"));
             SelectList HTTT = new SelectList(listHTThanhToan, "Name", "Name");
             SelectList HTGH = new SelectList(listHTGiaoHang, "NameGH", "NameGH");
+
             ViewBag.HTTT = HTTT;
             ViewBag.HTGH = HTGH;
+
             return PartialView(KhachHang);
         }
         [HttpGet]
@@ -426,39 +453,72 @@ namespace QLBH_055.Controllers
             }
             return View(list);
         }
-        
+
         [HttpPost]
-        public ActionResult ThanhToan(FormCollection kh)
+        public ActionResult ThanhToan(FormCollection kh, DateTime ngaygiao)
         {
-            var donhang = new HOADON();
-            donhang.MAKH = int.Parse(Session["MAKH"].ToString());
-            donhang.TENKH = kh["HOTEN"].ToString();
-            donhang.DIENTHOAI = kh["DIENTHOAI"].ToString();
-            donhang.DIACHI = kh["DIACHI"].ToString();
-            donhang.NGAYDAT = DateTime.Now.Date;
-            donhang.HTTHANHTOAN = kh["Id"].ToString();
-            donhang.HTGIAOHANG = kh["MaGH"].ToString();
-            donhang.DONGIA = TongTien();
             try
             {
+                string mail = Session["EMAIL"].ToString();
+                var donhang = new HOADON();
+                donhang.MAKH = int.Parse(Session["MAKH"].ToString());
+                donhang.TENKH = kh["HOTEN"].ToString();
+                donhang.DIENTHOAI = kh["DIENTHOAI"].ToString();
+                donhang.DIACHI = kh["DIACHI"].ToString();
+                donhang.NGAYDAT = DateTime.Now.Date;
+                donhang.NGAYGIAO = ngaygiao;
+                donhang.HTTHANHTOAN = kh["Id"].ToString();
+                donhang.HTGIAOHANG = kh["MaGH"].ToString();
+                donhang.DONGIA = TongTien();
+
                 var MaKH = them(donhang);
                 var GioHang = (List<GioHang>)Session["GioHang"];
                 foreach (var item in GioHang)
                 {
-                    var CTHOADON = new CTHOADON();
-                    CTHOADON.MAHD = donhang.MAHD;
-                    CTHOADON.MASP = item.MASP;
-                    CTHOADON.TENSP = item.TENSP;
-                    CTHOADON.SOLUONG = item.SoLuong;
-                    CTHOADON.DONGIA = item.GIASP;
-                    CTHOADON.THANHTIEN = item.ThanhTien;
-                    db.CTHOADONs.Add(CTHOADON);
-                    db.SaveChanges();
+                    try
+                    {
+                        var CTHOADON = new CTHOADON();
+
+                        CTHOADON.MAHD = donhang.MAHD;
+                        CTHOADON.MASP = item.MASP;
+                        CTHOADON.TENSP = item.TENSP.ToString();
+                        CTHOADON.SOLUONG = item.SoLuong;
+                        CTHOADON.DONGIA = item.GIASP;
+                        CTHOADON.THANHTIEN = item.ThanhTien;
+                        db.CTHOADONs.Add(CTHOADON);
+                        db.SaveChanges();
+                        s.autosendEmail(mail, CTHOADON.MAHD);
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
                 }
+
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException e)
             {
-                throw ex;
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
             Session["GioHang"] = null;
             return Redirect("~/Trang-Chu");

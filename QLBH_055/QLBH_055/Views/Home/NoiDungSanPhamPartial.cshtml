@@ -17,7 +17,9 @@
                         <div class="hovereffect">
                             @if (item.SPMOI == 1)
                             {
-                                <span class="new">Mới</span>
+                                <div class="discount-badge blue">
+                                    <div><span>Mới</span></div>
+                                </div>
                             }
                             <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a>
                             <div class="overlay">
@@ -40,7 +42,11 @@
                 <div class="frame">
                     <div class="picture">
                         <div class="hovereffect">
-                            <span class=" sale">Giảm giá</span>
+                            <div class="badge1 blue1">
+                                <div>
+                                    <span class="">@Html.Action("FormatPrice", "Home", new { _strInput = ((item.GIAMGIA / item.GIASP) * 100).Value.ToString("#,###") })%</span>
+                                </div>
+                            </div>
                             <a href="~/Chi-Tiet?MASP=@item.MASP"><img src="@Url.Content("~/Image/"+item.ANHSP+"")" class="img-size img-responsive text-center img-thumbnail" alt=""></a> <div class="overlay">
                                 <a data-id="@item.MASP" class="info  btn giohang" style="margin-top:100px;" data-toggle="tooltip">Thêm giỏ hàng</a>
 

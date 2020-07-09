@@ -34,10 +34,5 @@ namespace QLBH_055.Models
         public DbSet<QUANGCAO> QUANGCAOs { get; set; }
         public DbSet<SANPHAM> SANPHAMs { get; set; }
         public DbSet<TINTUC> TINTUCs { get; set; }
-
-        internal object Entry(object kHACHHANG)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

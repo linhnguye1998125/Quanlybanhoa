@@ -5,11 +5,27 @@
 <script src="https://kit.fontawesome.com/1e771be518.js" crossorigin="anonymous"></script>
 <link href="~/Content/CssClient/CssLayoutClient.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="~/Content/CssClient/search-form.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @{
     /**/
 
     string Logo = Html.Action("GetQC", "Header", new { ThuTuQC = 1 }).ToString();
 }
+<script>
+    $.ajax({
+        url: "/Home/gettensp",
+        dataType: "JSON",
+        type: "GET",
+        success: function (res) {
+            $("#tags").autocomplete({
+                source: res.data
+            });
+        }
+    })
+</script>
 <div class="row" style="background-color:#222944">
     <div class="col-lg-3 text-center" style="">
 
@@ -65,16 +81,16 @@
                     <div class="row">
                         <div class="col-lg-3 columns">
                             @*<div class="contact">
-                                    <div class="icon_c">
-                                        <i class="fa fa-mobile-phone"></i>
-                                    </div>
-                                    <div class="content">
-                                        <p class="bold_c">HỖ TRỢ GỌI NGAY</p>
-                                        <span>
-                                            <a href="#" class="phone">0972612445</a>
-                                        </span>
-                                    </div>
-                                </div>*@
+                <div class="icon_c">
+                    <i class="fa fa-mobile-phone"></i>
+                </div>
+                <div class="content">
+                    <p class="bold_c">HỖ TRỢ GỌI NGAY</p>
+                    <span>
+                        <a href="#" class="phone">0972612445</a>
+                    </span>
+                </div>
+            </div>*@
                             <a href="~/Trang-Chu" class="logo-top">
                                 <img class="logo" src="@Url.Content(Logo)" alt="logo">
                             </a>
@@ -89,7 +105,7 @@
                             {
                                 <ul class="nav navbar-right">
                                     <li>
-                                        <input name="txttimkiem" type="text" class="form-control nho" placeholder="Tìm kiếm" />
+                                        <input name="txttimkiem" id="tags" type="text" class="form-control nho" placeholder="Tìm kiếm" />
                                         <input type="submit" class="btn btn-default btn-image" value="" />
                                     </li>
                                 </ul>
@@ -97,7 +113,7 @@
                             }
 
                         </div>
-
+                    
 
                         <div class="col-lg-3 columns benphai">
                             <div class="tool">
@@ -119,16 +135,16 @@
                                     if (Session["MAKH"] == null)
                                     {
                                         @*<span class="icon_user">
-                    <i class="fa fa-user"></i>
-                </span>
-                <ul class="login list-group">
-                    <li class="list-group-item">
-                        <a href="~/Dang-Nhap">Đăng nhập</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="~/Dang-Ky">Đăng ký</a>
-                    </li>
-                </ul>*@
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <ul class="login list-group">
+                            <li class="list-group-item">
+                                <a href="~/Dang-Nhap">Đăng nhập</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="~/Dang-Ky">Đăng ký</a>
+                            </li>
+                        </ul>*@
                                         <ul>
                                             <li class="dropdown icon_user">
 
@@ -154,7 +170,7 @@
                                             <span class="caret">
                                             </span>
                                         </p>
-                                      
+
                                         <ul class="information_login list-group dropdown-menu">
                                             <li><a href="~/Thong-Tin-Ca-Nhan">Thông tin cá nhân</a></li>
                                             <li><a href="~/Dang-Xuat">Đăng xuất</a></li>

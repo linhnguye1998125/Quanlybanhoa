@@ -253,7 +253,7 @@
           </Key>
           <Property Name="MAHD" Type="Int32" Nullable="false" />
           <Property Name="MASP" Type="Int32" Nullable="false" />
-          <Property Name="TENSP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TENSP" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="DONGIA" Type="Decimal" Precision="20" Scale="0" />
           <Property Name="THANHTIEN" Type="Decimal" Precision="31" Scale="0" annotation:StoreGeneratedPattern="Computed" />
@@ -294,10 +294,10 @@
             <PropertyRef Name="MAKH" />
           </Key>
           <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HOTEN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="DIENTHOAI" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="MATKHAU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DIENTHOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GIOITINH" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
           <Property Name="DIACHI" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />

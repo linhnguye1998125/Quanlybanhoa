@@ -7,7 +7,19 @@
 }
 <link href="~/Content/CssClient/CssTrangChu.css" rel="stylesheet" />
 <script src="~/Content/hoa.js"></script>
-
+}
+<script>
+    $.ajax({
+        url: "/Home/gettensp",
+        dataType: "JSON",
+        type: "GET",
+        success: function (res) {
+            $("#tags").autocomplete({
+                source: res.data
+            });
+        }
+    })
+</script>
 @Html.Action("SliderPartial", "Slider")
 
 <div class="container">
@@ -29,14 +41,10 @@
 <div id="ContentPartial">
     @Html.Action("ContentPartial", "Home")
 </div>
-
 <div class="container  text-center p-3">
-
     <div class="row p-3 ">
-
         @using (Html.BeginForm("TrangChu", "Home", FormMethod.Post))
         {
-
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
             <form class="form-inline  text-center d-print-inline-block " style="padding:50px;">
@@ -57,7 +65,6 @@
         }
     </div>
 </div>
-
 <script type="text/javascript">
     $(document).ready(function () {
         $(".category-item").click(function () {

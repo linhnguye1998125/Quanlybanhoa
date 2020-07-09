@@ -18,6 +18,11 @@
                     @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
                 </div>
                 <div class="chung-thanhtoan height">
+                    <span class="khoangcach">Ngày giao</span>
+                    @Html.TextBox("ngaygiao", null, new { @class = "form-control", @type= "date", @placeholder = "Email(*)" })
+                    @*<input id="ngaygiao" name="Name" type="date" />*@
+                </div>
+                <div class="chung-thanhtoan height">
                     <span class="khoangcach">Hình thức thanh toán:</span>
                     @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding", @id = "ddlFruits", @onchange = "GetSelectedTextValue(this)" })
                 </div>
@@ -26,7 +31,7 @@
                     <div id="paypal-button-container"></div>
 
                     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-                    
+
                 </div>
                 <div class="chung-thanhtoan height">
                     <span class="khoangcach">Hình thức giao hàng:</span>

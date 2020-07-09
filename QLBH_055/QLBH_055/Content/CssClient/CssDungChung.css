@@ -184,3 +184,132 @@ h-100{
         -webkit-transition-delay: .2s;
         transition-delay: .2s;
     }
+
+.badge1 {
+    z-index: 25;
+    position: absolute;
+    width: 83px;
+    height: 40px;
+    border-radius: 37px;
+    display: inline-block;
+    top: 26px;
+    left: 2%;
+    transition: all 0.2s ease;
+    transform: rotate(0deg);
+}
+    .badge1:before, .badge1:after {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        background: inherit;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .badge1:before {
+        transform: rotate(60deg);
+    }
+
+    .badge1:after {
+        transform: rotate(-60deg);
+    }
+
+    .badge1 div {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        background: inherit;
+        z-index: 10;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .badge1 span {
+        font-family: "Paytone One";
+        display: inline-block;
+        color: white;
+        font-size: 2.2rem;
+    }
+
+.blue1 {
+    background: linear-gradient(to bottom right, #a507f6 0%, #64135e 100%);
+    color: #a42ccb;
+}
+
+
+.discount-badge {
+    z-index: 25;
+    position: absolute;
+    width: 83px;
+    height: 40px;
+    border-radius: 37px;
+    display: inline-block;
+    top: 26px;
+    left: 2%;
+    transition: all 0.2s ease;
+    transform: rotate(0deg);
+}
+
+    .discount-badge:before, .discount-badge:after {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        background: inherit;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .discount-badge:before {
+        transform: rotate(60deg);
+    }
+
+    .discount-badge:after {
+        transform: rotate(-60deg);
+    }
+
+    .discount-badge div {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        background: inherit;
+        z-index: 10;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .discount-badge span {
+        font-family: "Paytone One";
+        display: inline-block;
+        color: white;
+        font-size: 2.2rem;
+    }
+
+.blue {
+    background: linear-gradient(to bottom right, #f60707 0%, #6a2605 100%);
+    color: #a42ccb;
+}
+

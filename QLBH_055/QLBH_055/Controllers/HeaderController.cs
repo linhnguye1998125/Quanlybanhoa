@@ -22,6 +22,14 @@ namespace QLBH_055.Controllers
     {
         // GET: Header
         QLBHEntities db = new QLBHEntities();
+        public JsonResult gettensp()
+        {
+
+            var name = db.SANPHAMs.OrderBy(p => p.TENSP).Select(p => p.TENSP).ToList();
+
+            //   var tensp = new SendEmail().getlistname();
+            return Json(new { data = name }, JsonRequestBehavior.AllowGet);
+        }
         public PartialViewResult HeaderPartial()
         {
             var cart = Session["GioHang"];
@@ -56,7 +64,7 @@ namespace QLBH_055.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateGoogleCaptcha]
+        //[ValidateGoogleCaptcha]
         public ActionResult DangNhap(FormCollection f)
         {
 
@@ -76,6 +84,7 @@ namespace QLBH_055.Controllers
                 {
                     Session["MAKH"] = kh.MAKH.ToString();
                     Session["HoTen"] = kh.HOTEN.ToString(); ;
+                    Session["EMAIL"] = kh.EMAIL.ToString(); ;
                     return Redirect("~/Trang-Chu");
                 }
                 else
@@ -199,38 +208,56 @@ namespace QLBH_055.Controllers
         [HttpPost]
         public ActionResult ThongTinCaNhan(FormCollection fc)
         {
-
-            string hash;
-            int MAKH = int.Parse(Session["MAKH"].ToString());
-            var UpdateKH = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MAKH);
-            UpdateKH.MAKH = MAKH;
-            UpdateKH.HOTEN = fc["HOTEN"].ToString();
-            string GioiTinh = fc["GIOITINH"].ToString();
-            if (GioiTinh == "1")
+            try
             {
-                UpdateKH.GIOITINH = "Nam";
+
+
+                string hash;
+                string mk = fc["MATKHAU"].ToString();
+                int MAKH = int.Parse(Session["MAKH"].ToString());
+                var UpdateKH = db.KHACHHANGs.SingleOrDefault(n => n.MAKH == MAKH);
+                UpdateKH.MAKH = MAKH;
+                UpdateKH.HOTEN = fc["HOTEN"].ToString();
+                string GioiTinh = fc["GIOITINH"].ToString();
+                if (GioiTinh == "1")
+                {
+                    UpdateKH.GIOITINH = "Nam";
+                }
+                else
+                {
+                    UpdateKH.GIOITINH = "Nữ";
+                }
+                UpdateKH.DIENTHOAI = fc["DIENTHOAI"].ToString();
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    hash = GetMd5Hash(md5Hash, mk);
+                }
+                UpdateKH.MATKHAU = hash;
+                UpdateKH.DIACHI = fc["DIACHI"].ToString();
+
+                UpdateKH.NGAYSINH = DateTime.Parse(fc["NGAYSINH"].ToString());
+
+                UpdateModel(UpdateKH);
+                UpdateKH.MATKHAU = hash;
+                db.SaveChanges();
+
+            
+
             }
-            else
+            catch (DbEntityValidationException e)
             {
-                UpdateKH.GIOITINH = "Nữ";
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
-            UpdateKH.DIENTHOAI = fc["DIENTHOAI"].ToString();
-            using (MD5 md5Hash = MD5.Create())
-            {
-                hash = GetMd5Hash(md5Hash, fc["MATKHAU"].ToString());
-            }
-            UpdateKH.MATKHAU = hash;
-            UpdateKH.DIACHI = fc["DIACHI"].ToString();
-
-            UpdateKH.NGAYSINH = DateTime.Parse(fc["NGAYSINH"].ToString());
-
-            UpdateModel(UpdateKH);
-            db.SaveChanges();
-
-            //catch (DbEntityValidationException dbEx)
-            //{
-            //    ErorrException(dbEx);
-            //}
             return RedirectToAction("ThongTinCaNhan", "Header");
         }
         public ActionResult DoiMatKhau()
@@ -344,12 +371,13 @@ namespace QLBH_055.Controllers
                     var thongTinKhachHang = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == kh.EMAIL);
                     Session["MAKH"] = thongTinKhachHang.MAKH;
                     Session["HoTen"] = thongTinKhachHang.HOTEN;
+                    Session["EMAIL"] = thongTinKhachHang.EMAIL;
                     return Redirect("/");
                 }
                 else
                 {
                     Session["MAKH"] = khachHang.MAKH;
-                    Session["HoTen"] = khachHang.HOTEN;
+                    Session["HoTen"] = khachHang.HOTEN; Session["EMAIL"] = khachHang.EMAIL;
                     return Redirect("~/Trang-Chu");
                 }
 
@@ -445,7 +473,7 @@ namespace QLBH_055.Controllers
                         new AuthenticationProperties { IsPersistent = false }, ident);
             var thongTinKhachHang = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == user.EMAIL);
             Session["MAKH"] = thongTinKhachHang.MAKH;
-            Session["HoTen"] = thongTinKhachHang.HOTEN;
+            Session["HoTen"] = thongTinKhachHang.HOTEN; Session["EMAIL"] = thongTinKhachHang.EMAIL;
             return Redirect("~/");
 
         }
