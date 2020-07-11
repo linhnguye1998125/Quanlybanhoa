@@ -65,16 +65,33 @@ namespace QLBH_055.Controllers
         }
         public ActionResult Hoatuchon()
         {
+            //string str = "1001,1003,1005"; //query database and get the selected value
 
+            //List<string> selectedList = str.Split(',').ToList();
+
+            ////DDLGetInitData() method get the DropDownList Init data
+            ////according to the selected value to set the default selected value.
+            //List<SelectListItem> ddlitemlist = db.SANPHAMs.ToList().Select(c => new SelectListItem { Text = c.TENSP, Value = c.TENSP.ToString(), Selected = selectedList.Contains(c.MASP.ToString()) ? true : false }).ToList();
+
+            //ViewBag.ddlitemlist = ddlitemlist; //using ViewBag to bind DropDownList
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Hoatuchon(string ten, string email, string noidung, string loaihoa, string sl,string hoa)
+        public ActionResult Hoatuchon(string ten, string email, string noidung, string loaihoa, string sl, string[] DDLTest)
         {
-            s.sendEmailgiohangtchon(ten,email,noidung,loaihoa,sl,hoa);
+            try
+            {
+                string hoa = string.Join(",", DDLTest); //result like this: 1002,1004
+                s.sendEmailgiohangtchon(ten, email, noidung, loaihoa, sl, hoa);
+            }
+            catch(Exception e)
+            {
+
+            }
             return View();
         }
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LienHe(string ten, string email, string noidung)
@@ -163,6 +180,7 @@ namespace QLBH_055.Controllers
         //}
         public ActionResult kkk()
         {
+
             return View();
         }
 

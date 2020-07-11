@@ -376,3 +376,4 @@ C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QL
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QLBH_055.csproj.CopyComplete
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QLBH_055.dll
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QLBH_055.pdb
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Syncfusion.Licensing.dll

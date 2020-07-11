@@ -58,7 +58,7 @@ namespace QLBH_055.Models
             {
                 if (ten == "")
                 {
-                    string tt = "Website Hoa Tươi";
+         
                     string FilePath = HostingEnvironment.MapPath(@"~/Template/Update.html");
                     StreamReader str = new StreamReader(FilePath);
                     string MailText = str.ReadToEnd();/*Đọc file*/
@@ -213,7 +213,7 @@ namespace QLBH_055.Models
                 MailText = MailText.Replace("{{noidung}}", noidung.ToString());
                 MailText = MailText.Replace("{{ten}}", ten.ToString());
                 MailText = MailText.Replace("{{Email}}", email.ToString());
-                //MailText = MailText.Replace("{{loaihoa}}", loaihoa.ToString());
+                MailText = MailText.Replace("{{loaihoa}}", loaihoa.ToString());
                 MailText = MailText.Replace("{{sl}}", sl.ToString());
                 MailText = MailText.Replace("{{hoa}}", hoa.ToString());
 
@@ -247,11 +247,16 @@ namespace QLBH_055.Models
                 if (ten == "")
                 {
                     string tt = "Website Hoa Tươi";
-                    string FilePath = HostingEnvironment.MapPath(@"~/Template/Update.html");
+                    string FilePath = HostingEnvironment.MapPath(@"~/Template/giohangtuchon.html");
                     StreamReader str = new StreamReader(FilePath);
                     string MailText = str.ReadToEnd();/*Đọc file*/
+
+                    MailText = MailText.Replace("{{noidung}}", noidung.ToString());
                     MailText = MailText.Replace("{{ten}}", email.ToString());
-                    MailText = MailText.Replace("{{Email}}", null);
+                    MailText = MailText.Replace("{{Email}}", email.ToString());
+                    MailText = MailText.Replace("{{loaihoa}}", loaihoa.ToString());
+                    MailText = MailText.Replace("{{sl}}", sl.ToString());
+                    MailText = MailText.Replace("{{hoa}}", hoa.ToString());
                     str.Close(); /*đóng*/
                     var body = MailText;/*nội dung*/
                     var smtp = new SmtpClient/* khởi tạo phương thức SMTP*//*nhận hay truyền tải dữ liệu trong email của người dùng*/
@@ -277,11 +282,15 @@ namespace QLBH_055.Models
                 }
                 else
                 {
-                    string FilePath = HostingEnvironment.MapPath(@"~/Template/Update.html");
+                    string FilePath = HostingEnvironment.MapPath(@"~/Template/giohangtuchon.html");
                     StreamReader str = new StreamReader(FilePath);
                     string MailText = str.ReadToEnd();/*Đọc file*/
+                    MailText = MailText.Replace("{{noidung}}", noidung.ToString());
                     MailText = MailText.Replace("{{ten}}", ten.ToString());
                     MailText = MailText.Replace("{{Email}}", email.ToString());
+                    MailText = MailText.Replace("{{loaihoa}}", loaihoa.ToString());
+                    MailText = MailText.Replace("{{sl}}", sl.ToString());
+                    MailText = MailText.Replace("{{hoa}}", hoa.ToString());
 
                     str.Close(); /*đóng*/
                     var body = MailText;/*nội dung*/
@@ -314,10 +323,6 @@ namespace QLBH_055.Models
 
 
         }
-        public List<string> getlistname()
-        {
-            var name = db.SANPHAMs.OrderBy(p => p.TENSP).Select(p => p.TENSP).ToList();
-            return name;
-        }
+   
     }
 }
