@@ -19,7 +19,7 @@
                 </div>
                 <div class="chung-thanhtoan height">
                     <span class="khoangcach">Ngày giao</span>
-                    @Html.TextBox("ngaygiao", null, new { @class = "form-control", @type= "date", @placeholder = "Email(*)" })
+                    @Html.TextBox("ngaygiao", null, new { @class = "textboxchung", @type = "date", @placeholder = "Email(*)" })
                     @*<input id="ngaygiao" name="Name" type="date" />*@
                 </div>
                 <div class="chung-thanhtoan height">
@@ -38,7 +38,16 @@
                     @Html.DropDownList("MaGH", (IEnumerable<SelectListItem>)ViewBag.HTGH, new { @id = "myid", @class = "danhmuc-padding" })
 
                 </div>
+                <div class="chung-thanhtoan height">
+                    <div class="ssds">
+                        <span class="khoangcach">Ghi chú:</span>
+                    </div>
+                    <div class="ssds">
+                        @Html.TextArea("ghichu", null, new { @class = "textboxchung", @height = "auto", @placeholder = "ghi chú" })
+                        @*<input id="ngaygiao" name="Name" type="date" />*@
 
+                    </div>
+                </div>
                 <div id="divLoader" style="display:none;text-align:center;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div>
 
                 <div class="chung-thanhtoan">
@@ -69,7 +78,7 @@
                 //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
                 document.getElementById("paybal").style.display = 'block';
                 document.getElementById("btnthanhtoan").style.display = 'none';
-            
+
             }
             else {
                 document.getElementById("paybal").style.display = 'none';

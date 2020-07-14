@@ -855,6 +855,7 @@
     <Content Include="Content\CssClient\CssFooter.css" />
     <Content Include="Content\CssClient\CssGioHang.css" />
     <Content Include="Content\CssClient\CssGioiThieu.css" />
+    <Content Include="Content\CssClient\csshotuchon.css" />
     <Content Include="Content\CssClient\CssLayoutClient.css" />
     <Content Include="Content\CssClient\CssLienHe.css" />
     <Content Include="Content\CssClient\CssNavbar.css" />
@@ -867,10 +868,12 @@
     <Content Include="Content\CssClient\CssTrangChu.css" />
     <Content Include="Content\CssClient\search-form.css" />
     <Content Include="Content\hoa.js" />
+    <Content Include="Content\jquery-ui-1.11.2.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\paper-dashboard.css" />
     <Content Include="Content\CssAdmin\stylesAdmin.css" />
     <Content Include="Content\themify-icons.css" />
+    <Content Include="Content\ui.dropdownchecklist.themeroller.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\themify.svg" />

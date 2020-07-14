@@ -333,7 +333,8 @@ a#no {
     top: -12px;
     height: 66px;
     padding: 0px 0 0 0;
-    width: 1382px;
+    /*width: 1382px;*/
+    width: 100%;
     box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
     z-index: 111;
 }

@@ -126,7 +126,7 @@ namespace QLBH_055.Models
  
                
         }
-        public void autosendEmail(string email, int mahd)
+        public void autosendEmail(string email, int mahd,string ghichu)
         {
             var tenkh = "";
         
@@ -165,9 +165,9 @@ namespace QLBH_055.Models
             MailText = MailText.Replace("{{httt}}", httt);
             MailText = MailText.Replace("{{htgh}}", htgh);
             MailText = MailText.Replace("{{dongia}}", dongia);
-      
+            MailText = MailText.Replace("{{ghichu}}", ghichu);
 
-                str.Close(); /*đóng*/
+            str.Close(); /*đóng*/
                 var body = MailText;/*nội dung*/
 
 

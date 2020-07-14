@@ -473,7 +473,7 @@ namespace QLBH_055.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThanhToan(FormCollection kh, DateTime ngaygiao)
+        public ActionResult ThanhToan(FormCollection kh, DateTime ngaygiao, string ghichu)
         {
             try
             {
@@ -505,7 +505,7 @@ namespace QLBH_055.Controllers
                         CTHOADON.THANHTIEN = item.ThanhTien;
                         db.CTHOADONs.Add(CTHOADON);
                         db.SaveChanges();
-                        s.autosendEmail(mail, CTHOADON.MAHD);
+                        s.autosendEmail(mail, CTHOADON.MAHD, ghichu);
                     }
                     catch (DbEntityValidationException e)
                     {
