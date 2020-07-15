@@ -136,10 +136,6 @@ namespace QLBH_055.Models
             var httt = "";
             var htgh = "";
             var dongia = "";
-            var senderEmail = new MailAddress("linhnguyen1998125@gmail.com", "linh admin");/*người gửi*/
-            var receiverEmail = new MailAddress(email);/*người nhận*/
-            var password = "01672325249aA";/*password của người gửi*/
-            var sub = "Chào các bạn đã đến với website Bán Hoa :" + DateTime.Now;/*chủ để*/
             var CTHoaDon = db.HOADONs.Where(n => n.MAHD == mahd).ToList();
             foreach (var item in CTHoaDon)
             {
@@ -149,8 +145,14 @@ namespace QLBH_055.Models
                 ngaygiao = @item.NGAYGIAO.ToString();
                 httt = @item.HTTHANHTOAN.ToString();
                 htgh = @item.HTGIAOHANG.ToString();
-                dongia =   @item.DONGIA.ToString();
+                dongia = @item.DONGIA.ToString();
             }
+            var senderEmail = new MailAddress("linhnguyen1998125@gmail.com", "linh admin");/*người gửi*/
+            var receiverEmail = new MailAddress(email);/*người nhận*/
+            var password = "01672325249aA";/*password của người gửi*/
+            var sub = "Mã hóa đơn" + mahd.ToString() + "Cảm ơn quý khách đã đặt hàng tại website Bán Hoa của chúng tôi :" + DateTime.Now;/*chủ để*/
+         
+        
 
                 string FilePath = HostingEnvironment.MapPath(@"~/Template/giohang.html");
                 StreamReader str = new StreamReader(FilePath);

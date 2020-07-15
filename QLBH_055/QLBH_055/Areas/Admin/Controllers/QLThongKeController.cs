@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QLBH_055.Models;
+using System.Web.UI.WebControls;
+using System.Text;
 
 namespace QLBH_055.Areas.Admin.Controllers
 {
@@ -105,6 +107,20 @@ namespace QLBH_055.Areas.Admin.Controllers
 
             }
             return View("");
+        }
+        public ActionResult Export()
+        {
+
+            var data = Session["ADMIN"];
+            var thongke = new  GridView();
+            thongke.DataSource = data;
+            thongke.DataBind();
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "utf-8";
+            Response.ContentType = "application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment;filename= Báo cáo thống kê" + System.Web.HttpUtility.UrlEncode(thongke.ToString(), Encoding.UTF8) + ".xls");
+            return View();
         }
     }
 }
