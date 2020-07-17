@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using QLBH_055.Models;
 using System.Web.UI.WebControls;
 using System.Text;
+using System.Web.UI;
 
 namespace QLBH_055.Areas.Admin.Controllers
 {
@@ -110,17 +111,52 @@ namespace QLBH_055.Areas.Admin.Controllers
         }
         public ActionResult Export()
         {
+           
+                if (Session["ADMIN"] == null)
+                {
+                    return View(db.HOADONs.OrderBy(h=>h.MAHD).ToList());
+                }
+                var data = Session["ADMIN"];
+                var thongke = new GridView();
+                thongke.DataSource = data;
+                thongke.DataBind();
+                Response.Clear();
+                Response.Buffer = true;
+                Response.Charset = "utf-8";
+                Response.ContentType = "application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", "attachment;filename= Báo cáo thống kê" + ( Encoding.UTF8) + ".xls");
+                Response.ContentEncoding = System.Text.Encoding.UTF8;
+                Response.BinaryWrite(System.Text.Encoding.UTF8.GetPreamble());
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+                for (int i = 0; i < thongke.Rows.Count; i++)
+                {
+                    thongke.Rows[i].Attributes.Add("class", "textmode");
+                    thongke.Rows[i].Cells[0].Text = (i = 1).ToString();
+                    thongke.Rows[i].Cells.RemoveAt(11);
+                }
+                thongke.HeaderRow.BackColor = System.Drawing.Color.DarkGreen;
+                thongke.HeaderStyle.ForeColor = System.Drawing.Color.White;
+                thongke.HeaderRow.Cells[0].Text = "sdsd";
+                thongke.HeaderRow.Cells[1].Text = "sdssssd";
+                thongke.HeaderRow.Cells[2].Text = "ffgf";
+                thongke.HeaderRow.Cells[3].Text = "hghg";
+                thongke.HeaderRow.Cells[4].Text = "jhjg";
+                thongke.HeaderRow.Cells[5].Text = "jkh";
+                thongke.HeaderRow.Cells[6].Text = "hgjg";
+                thongke.HeaderRow.Cells[7].Text = "sddgfsd";
+                thongke.HeaderRow.Cells[8].Text = "ret";
+                thongke.HeaderRow.Cells[9].Text = "qưq";
+                thongke.HeaderRow.Cells[10].Text = "jm";
+                thongke.HeaderRow.Cells[11].Visible = false;
 
-            var data = Session["ADMIN"];
-            var thongke = new  GridView();
-            thongke.DataSource = data;
-            thongke.DataBind();
-            Response.Clear();
-            Response.Buffer = true;
-            Response.Charset = "utf-8";
-            Response.ContentType = "application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            Response.AddHeader("content-disposition", "attachment;filename= Báo cáo thống kê" + System.Web.HttpUtility.UrlEncode(thongke.ToString(), Encoding.UTF8) + ".xls");
-            return View();
+                thongke.RenderControl(hw);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+                var oder = db.HOADONs.OrderBy(h => h.MAHD).ToList();
+                return View();
+           
         }
     }
 }

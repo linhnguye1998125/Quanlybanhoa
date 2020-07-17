@@ -18,15 +18,19 @@
                     @Html.TextBoxFor(n => n.DIACHI, new { @class = "textboxchung", @placeholder = "Địa chỉ" })
                 </div>
                 <div class="chung-thanhtoan height">
+
                     <span class="khoangcach">Ngày giao</span>
-                    @Html.TextBox("ngaygiao", null, new { @class = "textboxchung", @type = "date", @placeholder = "Email(*)" })
+                    @Html.TextBox("ngaygiao", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "textboxchung", @type = "date" })
                     @*<input id="ngaygiao" name="Name" type="date" />*@
+                    @*required = "vui lòng chọn ngày giao"*@
                 </div>
                 <div class="chung-thanhtoan height">
                     <span class="khoangcach">Hình thức thanh toán:</span>
                     @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.HTTT, new { @class = "danhmuc-padding", @id = "ddlFruits", @onchange = "GetSelectedTextValue(this)" })
                 </div>
-
+                <div id="momo">
+                    <img class="img-responsive" src="~/Image/momo.jpg" />
+                </div>
                 <div id="paybal">
                     <div id="paypal-button-container"></div>
 
@@ -67,7 +71,7 @@
 </script>
 <script type="text/javascript">
     document.getElementById("paybal").style.display = 'none';
-
+    document.getElementById("momo").style.display = 'none';
     $(function () {
         $("#ddlFruits").change(function () {
             var selectedText = $(this).find("option:selected").text();
@@ -78,15 +82,25 @@
                 //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
                 document.getElementById("paybal").style.display = 'block';
                 document.getElementById("btnthanhtoan").style.display = 'none';
+                document.getElementById("momo").style.display = 'none';
+            } else if (selectedText == "Thanh toán bằng MOMO") {
+
+                //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+                document.getElementById("momo").style.display = 'block';
+                document.getElementById("paybal").style.display = 'none';
+                document.getElementById("btnthanhtoan").style.display = 'block';
 
             }
             else {
+                document.getElementById("momo").style.display = 'none';
                 document.getElementById("paybal").style.display = 'none';
                 document.getElementById("btnthanhtoan").style.display = 'block';
             }
 
         });
     });
+
+
 
 </script>
 <script>

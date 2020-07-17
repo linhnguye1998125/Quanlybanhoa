@@ -150,7 +150,7 @@ namespace QLBH_055.Models
             var senderEmail = new MailAddress("linhnguyen1998125@gmail.com", "linh admin");/*người gửi*/
             var receiverEmail = new MailAddress(email);/*người nhận*/
             var password = "01672325249aA";/*password của người gửi*/
-            var sub = "Mã hóa đơn" + mahd.ToString() + "Cảm ơn quý khách đã đặt hàng tại website Bán Hoa của chúng tôi :" + DateTime.Now;/*chủ để*/
+            var sub = "[Mã hóa đơn " + mahd.ToString()  + "] Cảm ơn quý khách đã đặt hàng tại website Bán Hoa của chúng tôi: " + DateTime.Now;/*chủ để*/
          
         
 

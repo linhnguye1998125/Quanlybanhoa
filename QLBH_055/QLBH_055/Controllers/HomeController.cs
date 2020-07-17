@@ -441,6 +441,7 @@ namespace QLBH_055.Controllers
             listHTThanhToan.Add(new HTThanhToanItem(1, "Thanh toán trước khi giao hàng"));
             listHTThanhToan.Add(new HTThanhToanItem(2, "Thanh toán Paypal"));
             listHTThanhToan.Add(new HTThanhToanItem(3, "Thanh toán sau khi nhận hàng"));
+            listHTThanhToan.Add(new HTThanhToanItem(4, "Thanh toán bằng MOMO"));
             List<HThucGiaoHang> listHTGiaoHang = new List<HThucGiaoHang>();
             listHTGiaoHang.Add(new HThucGiaoHang(1, "Giao trực tiếp tại cửa hàng"));
             listHTGiaoHang.Add(new HThucGiaoHang(2, "Chuyển giao"));
@@ -477,6 +478,7 @@ namespace QLBH_055.Controllers
         {
             try
             {
+           
                 string mail = Session["EMAIL"].ToString();
                 var donhang = new HOADON();
                 donhang.MAKH = int.Parse(Session["MAKH"].ToString());

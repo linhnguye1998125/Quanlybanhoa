@@ -181,7 +181,11 @@ namespace QLBH_055
                 url: "{controller}/San-Pham",
                 defaults: new { controller = "Home", action = "SanPham", id = UrlParameter.Optional }
             );
-
+            routes.MapRoute(
+              name: "Export",
+              url: "{controller}/Export",
+              defaults: new { controller = "Home", action = "Export", id = UrlParameter.Optional }
+          );
 
             //Đường dẫn tới trang đăng nhập facebook
             routes.MapRoute(
