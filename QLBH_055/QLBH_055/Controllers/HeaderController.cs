@@ -267,8 +267,17 @@ namespace QLBH_055.Controllers
         [HttpPost]
         public ActionResult DoiMatKhau(FormCollection f)
         {
-            // string hash;
-            string matkhau = "202cb962ac5975b964b7152d234b70";
+            Random rnd = new Random();
+            string mk;
+            string a = rnd.Next(1, 7).ToString();
+            string b = rnd.Next(1, 7).ToString();
+            string c = rnd.Next(1, 7).ToString();
+            string hast = a+b+c;
+            using (MD5 md5Hash = MD5.Create())
+            {
+                mk = GetMd5Hash(md5Hash, hast);
+            }
+            string matkhau = mk;
             string EmailAdmin = "linhnguyen1998125@gmail.com";
             string EmailClient = f["EMAIL"].ToString();
 
@@ -289,7 +298,7 @@ namespace QLBH_055.Controllers
                 mail.To.Add(EmailClient);
                 mail.From = new MailAddress(EmailAdmin);
                 mail.Subject = " Đặt lại mật khẩu website bán hoa";
-                mail.Body = "Mật khẩu của bạn đã được đặt lại là: <strong>123<strong>";
+                mail.Body = "Mật khẩu của bạn đã được đặt lại là:"+ hast;
                 mail.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";

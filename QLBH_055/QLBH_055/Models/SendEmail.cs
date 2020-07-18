@@ -248,7 +248,7 @@ namespace QLBH_055.Models
             {
                 if (ten == "")
                 {
-                    string tt = "Website Hoa Tươi";
+                
                     string FilePath = HostingEnvironment.MapPath(@"~/Template/giohangtuchon.html");
                     StreamReader str = new StreamReader(FilePath);
                     string MailText = str.ReadToEnd();/*Đọc file*/

@@ -393,6 +393,7 @@
     <Compile Include="Models\DANHMUC.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailJob.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\GoogleCaptchaHelper.cs" />
     <Compile Include="Models\GoogleLoginViewModel.cs" />
@@ -403,6 +404,7 @@
     <Compile Include="Models\HTThanhToanItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InvalidGoogleCaptchaHelper.cs" />
+    <Compile Include="Models\JobScheduler.cs" />
     <Compile Include="Models\KHACHHANG.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>

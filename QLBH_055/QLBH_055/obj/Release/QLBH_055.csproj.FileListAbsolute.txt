@@ -377,3 +377,12 @@ C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QL
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QLBH_055.dll
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\obj\Release\QLBH_055.pdb
 C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Syncfusion.Licensing.dll
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.Core.dll
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.dll
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Quartz.dll
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.pdb
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.xml
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.Core.pdb
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Common.Logging.Core.xml
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Quartz.pdb
+C:\Users\Nguyen Quang Linh\Desktop\Quanlybanhoa\QLBH_055\QLBH_055\bin\Quartz.xml

@@ -468,7 +468,7 @@ namespace QLBH_055.Controllers
             }
             catch (Exception ex)
             {
-
+                ex.GetBaseException();
             }
             return View(list);
         }
