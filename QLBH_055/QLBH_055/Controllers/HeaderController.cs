@@ -64,7 +64,7 @@ namespace QLBH_055.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[ValidateGoogleCaptcha]
+        [ValidateGoogleCaptcha]
         public ActionResult DangNhap(FormCollection f)
         {
 
