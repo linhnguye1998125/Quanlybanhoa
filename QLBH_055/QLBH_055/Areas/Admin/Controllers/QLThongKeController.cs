@@ -18,6 +18,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         QLBHEntities db = new QLBHEntities();
         public ActionResult ThongKe()
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             List<int> ItemMonth = new List<int>();
             for (int i = 1; i < 13; i++)
             {

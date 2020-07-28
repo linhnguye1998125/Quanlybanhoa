@@ -15,6 +15,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         public static int LuuMATT;
         public ActionResult TinTuc(int? page)
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             var TinTuc = db.TINTUCs.OrderBy(n => n.MATT).ToPagedList(pageNumber, pageSize);

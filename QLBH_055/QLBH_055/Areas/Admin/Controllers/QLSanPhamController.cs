@@ -16,6 +16,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         public static int LuuMASP;
         public ActionResult SanPham(int? page)
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             // tạo biến số sản phẩm trên một trang
             int pageSize = 10;
             // Số trang của sản phẩm

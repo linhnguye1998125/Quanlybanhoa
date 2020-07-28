@@ -14,7 +14,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         private static int LuuMAMN;
         public ActionResult Menu(int? page)
         {
-
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             var Menu = db.MENUs.ToList().OrderBy(n => n.MAMN).ToPagedList(pageNumber, pageSize);

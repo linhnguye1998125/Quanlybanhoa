@@ -16,6 +16,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         public static int LuuMAKH;
         public ActionResult KhachHang(int? page)
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             var KhachHang = db.KHACHHANGs.ToList().OrderBy(n => n.MAKH).ToPagedList(pageNumber, pageSize);

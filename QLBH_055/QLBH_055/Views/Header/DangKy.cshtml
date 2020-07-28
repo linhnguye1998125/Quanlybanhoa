@@ -112,8 +112,9 @@
 
                         @*<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">*@
                         <div class="input-row">
-                            @Html.TextBoxFor(n => n.NGAYSINH, new { @class = "input-share", @Placeholder = "Ngày sinh" })
-                            @Html.ValidationMessageFor(n => n.NGAYSINH, "", new { @class = "text-danger validate-common" })
+                            @Html.TextBoxFor(n => n.NGAYSINH, DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "textboxchung", @type = "date" })
+                            @*@Html.TextBoxFor(n => n.NGAYSINH, new { @class = "input-share", @Placeholder = "Ngày sinh" })
+                            @Html.ValidationMessageFor(n => n.NGAYSINH, "", new { @class = "text-danger validate-common" })*@
                         </div>
                     </div>
                     <div class="divider-form"></div>

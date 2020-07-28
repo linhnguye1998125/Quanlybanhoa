@@ -11,7 +11,8 @@ namespace QLBH_055.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class KHACHHANG
     {
         public KHACHHANG()
@@ -20,13 +21,19 @@ namespace QLBH_055.Models
         }
     
         public int MAKH { get; set; }
+        [Required]
         public string HOTEN { get; set; }
         public string DIENTHOAI { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
+        [Required]
+  
         public string MATKHAU { get; set; }
         public string GIOITINH { get; set; }
+
         public Nullable<System.DateTime> NGAYSINH { get; set; }
-        public string DIACHI { get; set; }
+        public string DIACHI { get; set; }[Required]
         public Nullable<bool> TRANGTHAI { get; set; }
     
         public virtual ICollection<HOADON> HOADONs { get; set; }

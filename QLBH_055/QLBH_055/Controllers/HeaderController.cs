@@ -372,7 +372,7 @@ namespace QLBH_055.Controllers
                 kh.DIENTHOAI = null;
                 kh.HOTEN = fullName;
                 kh.TRANGTHAI = true;
-                var khachHang = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == kh.EMAIL);
+                var khachHang = db.KHACHHANGs.FirstOrDefault(n => n.EMAIL == kh.EMAIL);
                 if (khachHang == null)
                 {
                     db.KHACHHANGs.Add(kh);
@@ -480,7 +480,7 @@ namespace QLBH_055.Controllers
 
             HttpContext.GetOwinContext().Authentication.SignIn(
                         new AuthenticationProperties { IsPersistent = false }, ident);
-            var thongTinKhachHang = db.KHACHHANGs.SingleOrDefault(n => n.EMAIL == user.EMAIL);
+            var thongTinKhachHang = db.KHACHHANGs.FirstOrDefault(n => n.EMAIL == user.EMAIL);
             Session["MAKH"] = thongTinKhachHang.MAKH;
             Session["HoTen"] = thongTinKhachHang.HOTEN; Session["EMAIL"] = thongTinKhachHang.EMAIL;
             return Redirect("~/");

@@ -16,6 +16,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         private static int LuuMADM;
         public ActionResult DanhMuc(int? page)
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             var DanhMuc = db.DANHMUCs.ToList().OrderBy(n => n.MADM).ToPagedList(pageNumber, pageSize);

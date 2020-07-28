@@ -15,6 +15,14 @@ namespace QLBH_055.Areas.Admin.Controllers
         private static int LuuMAQC;
         public ActionResult QuangCao(int? page)
         {
+            if (Session["ADMIN"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            else
+            {
+                ViewBag.NameAD = Session["TENAD"].ToString();
+            }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             var QuangCao = db.QUANGCAOs.ToList().OrderBy(n => n.MAQC).ToPagedList(pageNumber, pageSize);
