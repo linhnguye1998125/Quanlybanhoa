@@ -23,7 +23,7 @@ namespace QLBH_055
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
-            JobScheduler.Start(obj, 2020, 07, 19);
+            //JobScheduler.Start(obj, 2020, 07, 19);
         }
 
     }
